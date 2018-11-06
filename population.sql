@@ -319,43 +319,46 @@ insert into indicator values('Urine-pH',6,'pH','Sem unidade');
 
 
 /*_procedure				name | VAT_owner | date_timestamp | num | description*/
-insert into _procedure values('PiuPiu',35263686,'2018-08-01 13:01:31',1042,'Kidney transplant');
+insert into _procedure values('PiuPiu',35263686,'2018-08-01 12:45:02',1042,'Kidney transplant');
+insert into _procedure values('Luna',12345678,'2018-09-18 15:52:56',6136,'Blood test');
+insert into _procedure values('Rapina',45620852,'2017-03-20 15:18:15',2903,'Elbow X-ray');
+insert into _procedure values('Rapina',45620852,'2017-03-20 15:18:15',1892,'Elbow joint operation');
 
 
 /*test_procedure			name | VAT_owner | date_timestamp | num | type*/
-insert into test_procedure values('Luna',12345678,'2018-09-18 15:55:21',6136,'blood');
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
-insert into test_procedure values();
+insert into test_procedure values('Luna',12345678,'2018-09-18 15:52:56',6136,'blood');
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
+-- insert into test_procedure values();
 
 
 /*radiography				name | VAT_owner | date_timestamp | num | file*/
-
+insert into radiography values('Rapina',45620852,'2017-03-20 15:18:15',2903,'/Users/Vet/Documents/RapinaElbow.xray')
 
 
 /*produced_indicator		name | VAT_owner | date_timestamp | num | indicator_name | value*/
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
-insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
+-- insert into produced_indicator values();
 
 
 /*performed					name | VAT_owner | date_timestamp | num | VAT_assistant*/

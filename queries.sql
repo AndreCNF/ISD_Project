@@ -42,10 +42,10 @@ where VAT in(
 	select VAT
 	from animal));
 	
-/*5*******************************/
+/*5*/
 select diagnosis_code.name as 'Diagnosis', count(distinct name_med) as 'Distinct Medication'
 from diagnosis_code left outer join prescription using(code)
 group by code
 order by count(distinct name_med);
 
-/*6*/
+/*6***************************/
