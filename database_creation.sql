@@ -113,7 +113,7 @@ create table participation(
 );
 
 create table diagnosis_code(
-	code char(20),
+	code char(5),
 	name char(100),
 	primary key (code)
 );

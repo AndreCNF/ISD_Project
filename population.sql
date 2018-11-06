@@ -180,7 +180,8 @@ insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight,s) v
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Bobi',65856663,'2018-09-11 18:16:24',65856663,12032014,'15');
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Malandro',69630596,'2015-06-16 15:16:17',69630596,85264856,'16');
 
-/*participation*/
+
+/*participation					name | VAT_owner | date_timestamp | VAT_assistant*/
 insert into participation values('Bobi',12345678,'2018-09-18 18:00:01',85202652);
 insert into participation values('Miau',45620852,'2017-06-15 16:25:16',85202652);
 insert into participation values('Onitório',96520520,'2018-10-20 17:39:54',85202652);
@@ -189,90 +190,90 @@ insert into participation values('Malandro',69630596,'2015-06-16 15:16:17',85202
 insert into participation values('Malandro',69630596,'2015-06-16 15:16:17',63065186);
 
 /*diagnosis_code*/
-insert into diagnosis_code values(00000,'Allergies - Flea');
-insert into diagnosis_code values(00001,'Allergies - Food');
-insert into diagnosis_code values(00002,'Allergies - Skin');
-insert into diagnosis_code values(00003,'Anal Gland Disease');
-insert into diagnosis_code values(00004,'Arthritis');
-insert into diagnosis_code values(00005,'Bladder Stones');
-insert into diagnosis_code values(00006,'Bloat');
-insert into diagnosis_code values(00007,'Bone Cancer');
-insert into diagnosis_code values(00008,'Breast Cancer');
-insert into diagnosis_code values(00009,'Bronchitis');
-insert into diagnosis_code values(00010,'Cancer');
-insert into diagnosis_code values(00011,'Canine Influenza Virus');
-insert into diagnosis_code values(00012,'Cherry Eye');
-insert into diagnosis_code values(00013,'Cysts');
-insert into diagnosis_code values(00014,'Deafness');
-insert into diagnosis_code values(00015,'Demodectic Mange');
-insert into diagnosis_code values(00016,'Dental Disease');
-insert into diagnosis_code values(00017,'Depression');
-insert into diagnosis_code values(00018,'Diabetes Mellitus (Sugar Diabetes)');
-insert into diagnosis_code values(00019,'Diarrhea');
-insert into diagnosis_code values(00020,'Distemper');
-insert into diagnosis_code values(00021,'Dry Eye');
-insert into diagnosis_code values(00022,'Ear Conditions');
-insert into diagnosis_code values(00023,'Ear Hematoma');
-insert into diagnosis_code values(00024,'Ear Infection - External');
-insert into diagnosis_code values(00025,'Ear Infection - Middle');
-insert into diagnosis_code values(00026,'Ear Mites');
-insert into diagnosis_code values(00027,'Ehrlichiosis');
-insert into diagnosis_code values(00028,'Elbow Dysplasia');
-insert into diagnosis_code values(00029,'Enteritis');
-insert into diagnosis_code values(00030,'Entropion');
-insert into diagnosis_code values(00031,'Epiphora');
-insert into diagnosis_code values(00032,'Esophagus - Enlarged');
-insert into diagnosis_code values(00033,'Eye Infection');
-insert into diagnosis_code values(00034,'Eyelid Conditions');
-insert into diagnosis_code values(00035,'Fecal impaction');
-insert into diagnosis_code values(00036,'Flea Allergy');
-insert into diagnosis_code values(00037,'Folliculitis');
-insert into diagnosis_code values(00038,'Foreign Body (Intestinal)');
-insert into diagnosis_code values(00039,'Foreign Body (Nasal and Oral)');
-insert into diagnosis_code values(00040,'Fractures');
-insert into diagnosis_code values(00041,'Frostbite');
-insert into diagnosis_code values(00042,'Gastritis');
-insert into diagnosis_code values(00043,'Glaucoma');
-insert into diagnosis_code values(00044,'Head Injuries');
-insert into diagnosis_code values(00045,'Heartworm Infestation');
-insert into diagnosis_code values(00046,'Heat Stroke');
-insert into diagnosis_code values(00047,'Herpes Virus');
-insert into diagnosis_code values(00048,'Hip Dysplasia');
-insert into diagnosis_code values(00049,'Histoplasmosis');
-insert into diagnosis_code values(00050,'Hookworm Infestation');
-insert into diagnosis_code values(00051,'Hot Spots (Acute Moist Dermatitis)');
-insert into diagnosis_code values(00052,'Hypoglycemia');
-insert into diagnosis_code values(00053,'Hypothyroidism');
-insert into diagnosis_code values(00054,'Incontinence (Urinary)');
-insert into diagnosis_code values(00055,'Inflammatory Bowel Disease');
-insert into diagnosis_code values(00056,'Insect Bites');
-insert into diagnosis_code values(00057,'Intestinal Obstruction');
-insert into diagnosis_code values(00058,'Kennel Cough');
-insert into diagnosis_code values(00059,'kidney failure');
-insert into diagnosis_code values(00060,'Laryngeal Paralysis');
-insert into diagnosis_code values(00061,'Laryngitis');
-insert into diagnosis_code values(00062,'Leukemia');
-insert into diagnosis_code values(00063,'Lick Granuloma');
-insert into diagnosis_code values(00064,'Lipoma');
-insert into diagnosis_code values(00065,'Liver Disease');
-insert into diagnosis_code values(00066,'Lyme Disease');
-insert into diagnosis_code values(00067,'Lymphoma');
-insert into diagnosis_code values(09002,'Obesity');
+insert into diagnosis_code values('00000','Allergies - Flea');
+insert into diagnosis_code values('00001','Allergies - Food');
+insert into diagnosis_code values('00002','Allergies - Skin');
+insert into diagnosis_code values('00003','Anal Gland Disease');
+insert into diagnosis_code values('00004','Arthritis');
+insert into diagnosis_code values('00005','Bladder Stones');
+insert into diagnosis_code values('00006','Bloat');
+insert into diagnosis_code values('00007','Bone Cancer');
+insert into diagnosis_code values('00008','Breast Cancer');
+insert into diagnosis_code values('00009','Bronchitis');
+insert into diagnosis_code values('00010','Cancer');
+insert into diagnosis_code values('00011','Canine Influenza Virus');
+insert into diagnosis_code values('00012','Cherry Eye');
+insert into diagnosis_code values('00013','Cysts');
+insert into diagnosis_code values('00014','Deafness');
+insert into diagnosis_code values('00015','Demodectic Mange');
+insert into diagnosis_code values('00016','Dental Disease');
+insert into diagnosis_code values('00017','Depression');
+insert into diagnosis_code values('00018','Diabetes Mellitus (Sugar Diabetes)');
+insert into diagnosis_code values('00019','Diarrhea');
+insert into diagnosis_code values('00020','Distemper');
+insert into diagnosis_code values('00021','Dry Eye');
+insert into diagnosis_code values('00022','Ear Conditions');
+insert into diagnosis_code values('00023','Ear Hematoma');
+insert into diagnosis_code values('00024','Ear Infection - External');
+insert into diagnosis_code values('00025','Ear Infection - Middle');
+insert into diagnosis_code values('00026','Ear Mites');
+insert into diagnosis_code values('00027','Ehrlichiosis');
+insert into diagnosis_code values('00028','Elbow Dysplasia');
+insert into diagnosis_code values('00029','Enteritis');
+insert into diagnosis_code values('00030','Entropion');
+insert into diagnosis_code values('00031','Epiphora');
+insert into diagnosis_code values('00032','Esophagus - Enlarged');
+insert into diagnosis_code values('00033','Eye Infection');
+insert into diagnosis_code values('00034','Eyelid Conditions');
+insert into diagnosis_code values('00035','Fecal impaction');
+insert into diagnosis_code values('00036','Flea Allergy');
+insert into diagnosis_code values('00037','Folliculitis');
+insert into diagnosis_code values('00038','Foreign Body (Intestinal)');
+insert into diagnosis_code values('00039','Foreign Body (Nasal and Oral)');
+insert into diagnosis_code values('00040','Fractures');
+insert into diagnosis_code values('00041','Frostbite');
+insert into diagnosis_code values('00042','Gastritis');
+insert into diagnosis_code values('00043','Glaucoma');
+insert into diagnosis_code values('00044','Head Injuries');
+insert into diagnosis_code values('00045','Heartworm Infestation');
+insert into diagnosis_code values('00046','Heat Stroke');
+insert into diagnosis_code values('00047','Herpes Virus');
+insert into diagnosis_code values('00048','Hip Dysplasia');
+insert into diagnosis_code values('00049','Histoplasmosis');
+insert into diagnosis_code values('00050','Hookworm Infestation');
+insert into diagnosis_code values('00051','Hot Spots (Acute Moist Dermatitis)');
+insert into diagnosis_code values('00052','Hypoglycemia');
+insert into diagnosis_code values('00053','Hypothyroidism');
+insert into diagnosis_code values('00054','Incontinence (Urinary)');
+insert into diagnosis_code values('00055','Inflammatory Bowel Disease');
+insert into diagnosis_code values('00056','Insect Bites');
+insert into diagnosis_code values('00057','Intestinal Obstruction');
+insert into diagnosis_code values('00058','Kennel Cough');
+insert into diagnosis_code values('00059','kidney failure');
+insert into diagnosis_code values('00060','Laryngeal Paralysis');
+insert into diagnosis_code values('00061','Laryngitis');
+insert into diagnosis_code values('00062','Leukemia');
+insert into diagnosis_code values('00063','Lick Granuloma');
+insert into diagnosis_code values('00064','Lipoma');
+insert into diagnosis_code values('00065','Liver Disease');
+insert into diagnosis_code values('00066','Lyme Disease');
+insert into diagnosis_code values('00067','Lymphoma');
+insert into diagnosis_code values('09002','Obesity');
 
 /*consult_diagnosis               code | name | VAT_owner | date_timestamp*/
-insert into consult_diagnosis values(00016,'Bobi',12345678,'2018-09-18 18:00:01');
-insert into consult_diagnosis values(00051,'Onitório',96520520,'2018-10-01 15:24:54');
-insert into consult_diagnosis values(09002,'Miau',45620852,'2016-02-06 14:50:30');
-insert into consult_diagnosis values(09002,'Onitório',96520520,'2018-10-01 15:24:54');
-insert into consult_diagnosis values(00059,'PiuPiu',35263686,'2018-08-01 12:45:02');
-insert into consult_diagnosis values(09002,'PiuPiu',35263686,'2018-08-01 12:45:02');
-insert into consult_diagnosis values(00062,'Bobi',65856663,'2018-09-11 18:16:24');
-insert into consult_diagnosis values(00045,'PiuPiu',35263686,'2018-08-01 12:45:02');
-insert into consult_diagnosis values(00056,'PiuPiu',35263686,'2018-08-01 12:45:02');
-insert into consult_diagnosis values(00054,'Luna',12345678,'2018-09-18 15:52:56');
-insert into consult_diagnosis values(00028,'Rapina',45620852,'2017-03-20 15:18:15');
+insert into consult_diagnosis values('00016','Bobi',12345678,'2018-09-18 18:00:01');
+insert into consult_diagnosis values('00051','Onitório',96520520,'2018-10-01 15:24:54');
+insert into consult_diagnosis values('09002','Miau',45620852,'2016-02-06 14:50:30');
+insert into consult_diagnosis values('09002','Onitório',96520520,'2018-10-01 15:24:54');
+insert into consult_diagnosis values('00059','PiuPiu',35263686,'2018-08-01 12:45:02');
+insert into consult_diagnosis values('09002','PiuPiu',35263686,'2018-08-01 12:45:02');
+insert into consult_diagnosis values('00062','Bobi',65856663,'2018-09-11 18:16:24');
+insert into consult_diagnosis values('00045','PiuPiu',35263686,'2018-08-01 12:45:02');
+insert into consult_diagnosis values('00056','PiuPiu',35263686,'2018-08-01 12:45:02');
+insert into consult_diagnosis values('00054','Luna',12345678,'2018-09-18 15:52:56');
+insert into consult_diagnosis values('00028','Rapina',45620852,'2017-03-20 15:18:15');
 
-/*medication                 name | lab | dosage*/
+/*medication				name | lab | dosage*/
 insert into medication values('levicim','emagricon','5 comprimidos de 20 mg');
 insert into medication values('benouron','SLS','20 comprimidos de 500 mg');
 insert into medication values('laxil','intestiniti','10 capsulas de 100 mL');
@@ -286,21 +287,22 @@ insert into medication values('Desparasis','TiraBicho','3 Capsulas de 20 mL');
 insert into medication values('Bracite','Novosso','25 comprimidos de 150 mg');
 
 /*prescription              code | name | VAT_owner | date_timestamp | name_med | lab | dosage | regime*/
-insert into prescription values(00016,'Bobi',12345678,'2018-09-18 18:00:01','CliniDent','Bayer','5 biscoitos','Dar 1 por dia');
-insert into prescription values(00016,'Bobi',12345678,'2018-09-18 18:00:01','benouron','SLS','20 comprimidos de 250 mg','1 comprimido de 8 em 8 horas');
-insert into prescription values(09002,'Miau',45620852,'2016-02-06 14:50:30','levicim','emagricon','5 comprimidos de 20 mg','1 comprimido por dia');
-insert into prescription values(09002,'Miau',45620852,'2016-02-06 14:50:30','laxil','intestiniti','10 capsulas de 100 mL','1 comprimido por dia');
-insert into prescription values(09002,'Onitório',96520520,'2018-10-01 15:24:54','levicim','emagricon','5 comprimidos de 20 mg','2 comprimido por dia');
-insert into prescription values(09002,'Onitório',96520520,'2018-10-01 15:24:54','laxil','intestiniti','10 capsulas de 100 mL','1 comprimido por dia');
-insert into prescription values(09002,'PiuPiu',35263686,'2018-08-01 12:45:02','levicim','emagricon','5 comprimidos de 20 mg','0.5 comprimido por dia');
-insert into prescription values(09002,'PiuPiu',35263686,'2018-08-01 12:45:02','laxil','intestiniti','10 capsulas de 100 mL','0.5 comprimido por dia');
-insert into prescription values(00045,'PiuPiu',35263686,'2018-08-01 12:45:02','Desparasis','TiraBicho','3 Capsulas de 20 mL','1 capsula por mês');
-insert into prescription values(00028,'Rapina',45620852,'2017-03-20 15:18:15','Bracite','Novosso','25 comprimidos de 150 mg','1 comprimido por dia');
-insert into prescription values(00028,'Rapina',45620852,'2017-03-20 15:18:15','Brufen','JAOS','20 comprimidos de 26g','1 comprimido de 8 em 8 horas');
-insert into prescription values(00028,'Rapina',45620852,'2017-03-20 15:18:15','benouron','SLS','20 comprimidos de 250 mg','1 comprimido por dia');
+insert into prescription values('00016','Bobi',12345678,'2018-09-18 18:00:01','CliniDent','Bayer','5 biscoitos','Dar 1 por dia');
+insert into prescription values('00016','Bobi',12345678,'2018-09-18 18:00:01','benouron','SLS','20 comprimidos de 250 mg','1 comprimido de 8 em 8 horas');
+insert into prescription values('09002','Miau',45620852,'2016-02-06 14:50:30','levicim','emagricon','5 comprimidos de 20 mg','1 comprimido por dia');
+insert into prescription values('09002','Miau',45620852,'2016-02-06 14:50:30','laxil','intestiniti','10 capsulas de 100 mL','1 comprimido por dia');
+insert into prescription values('09002','Onitório',96520520,'2018-10-01 15:24:54','levicim','emagricon','5 comprimidos de 20 mg','2 comprimido por dia');
+insert into prescription values('09002','Onitório',96520520,'2018-10-01 15:24:54','laxil','intestiniti','10 capsulas de 100 mL','1 comprimido por dia');
+insert into prescription values('09002','PiuPiu',35263686,'2018-08-01 12:45:02','levicim','emagricon','5 comprimidos de 20 mg','0.5 comprimido por dia');
+insert into prescription values('09002','PiuPiu',35263686,'2018-08-01 12:45:02','laxil','intestiniti','10 capsulas de 100 mL','0.5 comprimido por dia');
+insert into prescription values('00045','PiuPiu',35263686,'2018-08-01 12:45:02','Desparasis','TiraBicho','3 Capsulas de 20 mL','1 capsula por mês');
+insert into prescription values('00028','Rapina',45620852,'2017-03-20 15:18:15','Bracite','Novosso','25 comprimidos de 150 mg','1 comprimido por dia');
+insert into prescription values('00028','Rapina',45620852,'2017-03-20 15:18:15','Brufen','JAOS','20 comprimidos de 26g','1 comprimido de 8 em 8 horas');
+insert into prescription values('00028','Rapina',45620852,'2017-03-20 15:18:15','benouron','SLS','20 comprimidos de 250 mg','1 comprimido por dia');
+insert into prescription values('00028','Rapina',45620852,'2017-03-20 15:18:15','benouron','SLS','20 comprimidos de 500 mg','1 comprimido por dia');
 
 
-/*indicator*/
+/*indicator					name | reference_value | units | description*/
 insert into indicator values('Blood-Sodium',320,'miligrams','Medido em mg/dL');
 insert into indicator values('Blood-Potassium',17.5,'miligrams','Medido em mg/dL');
 insert into indicator values('Blood-Chloride',355,'miligrams','Medido em mg/dL');
@@ -315,4 +317,45 @@ insert into indicator values('Urine-Urea',16,'grams','Medido em g/24h');
 insert into indicator values('Urine-Uric Acid',400,'miligrams','Medido em mg/24h'); 
 insert into indicator values('Urine-pH',6,'pH','Sem unidade');
 
-/*_procedure              */
+
+/*_procedure				name | VAT_owner | date_timestamp | num | description*/
+insert into _procedure values('PiuPiu',35263686,'2018-08-01 13:01:31',1042,'Kidney transplant');
+
+
+/*test_procedure			name | VAT_owner | date_timestamp | num | type*/
+insert into test_procedure values('Luna',12345678,'2018-09-18 15:55:21',6136,'blood');
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+insert into test_procedure values();
+
+
+/*radiography				name | VAT_owner | date_timestamp | num | file*/
+
+
+
+/*produced_indicator		name | VAT_owner | date_timestamp | num | indicator_name | value*/
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+insert into produced_indicator values();
+
+
+/*performed					name | VAT_owner | date_timestamp | num | VAT_assistant*/
