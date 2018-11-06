@@ -33,7 +33,7 @@ create table person(
 /*METER CONSTRAINT*/
 create table phone_number(
 	VAT integer,
-	phone integer,
+	phone char(15),
 	primary key(VAT, phone),
 	foreign key(VAT) references person(VAT)
 );

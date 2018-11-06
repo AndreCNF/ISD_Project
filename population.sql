@@ -10,20 +10,26 @@ insert into person values(65856663,'Tiago Vasques','Praceta da manteiga, lote 3,
 insert into person values(69630596,'Sara Pimpalho','Rua 25 de Abril, nº 74', 'Grandola','2504-974');
 insert into person values(78526209,'Rui Espinola','Avenida Brasil, nº 24, 11º F', 'Tomar','9853-208');
 insert into person values(45620852,'Renata Amorim','Rua da Serafina, nº 14', 'Picardães','8524-520');
+insert into person values(63065186,'Liliana Santos','Rua das Flores, nº 32','Carregado','2580-410');
+insert into person values(53250530,'Mário Fernandes','Rua D. Afonso Henriques, nº 6, 2ºE','Leiria','5320-632');
+insert into person values(63520543,'João Serra','Avinida São Paulo, nº5','Guimarães','6304-863');
 
 /*phone_number*/
 /*******************************  VAT   |   phone */
-insert into phone_number values(12345678,912345670);
-insert into phone_number values(12032014,269358742);
-insert into phone_number values(85202652,210524896);
-insert into phone_number values(96520520,936210875);
-insert into phone_number values(85264856,263596307);
-insert into phone_number values(35263686,965423580);
-insert into phone_number values(98585856,918520856);
-insert into phone_number values(65856663,920520648);
-insert into phone_number values(69630596,251068266);
-insert into phone_number values(78526209,270352066);
-insert into phone_number values(45620852,930536378);
+insert into phone_number values(12345678,'912345670');
+insert into phone_number values(12032014,'269358742');
+insert into phone_number values(85202652,'210524896');
+insert into phone_number values(96520520,'936210875');
+insert into phone_number values(85264856,'263596307');
+insert into phone_number values(35263686,'965423580');
+insert into phone_number values(98585856,'918520856');
+insert into phone_number values(65856663,'920520648');
+insert into phone_number values(69630596,'251068266');
+insert into phone_number values(78526209,'270352066');
+insert into phone_number values(45620852,'930536378');
+insert into phone_number values(63065186,'918206630');
+insert into phone_number values(53250530,'+63220185206');
+insert into phone_number values(63520543,'963025225');
 
 /*client*/
 /************************  VAT */
@@ -44,6 +50,9 @@ insert into veterinary values(12032014,'Patologia Clínica','Especialização em
 /*assistant*/
 /***************************   VAT*/
 insert into assistant values(85202652);
+insert into assistant values(63065186);
+insert into assistant values(53250530);
+insert into assistant values(63520543);
 
 /*species*/
 /************************* name    | desc  */
@@ -177,6 +186,7 @@ insert into participation values('Miau',45620852,'2017-06-15 16:25:16',85202652)
 insert into participation values('Onitório',96520520,'2018-10-20 17:39:54',85202652);
 insert into participation values('Bobi',65856663,'2018-09-11 18:16:24',85202652);
 insert into participation values('Malandro',69630596,'2015-06-16 15:16:17',85202652);
+insert into participation values('Malandro',69630596,'2015-06-16 15:16:17',63065186);
 
 /*diagnosis_code*/
 insert into diagnosis_code values(00000,'Allergies - Flea');
@@ -284,7 +294,10 @@ insert into prescription values(09002,'Onitório',96520520,'2018-10-01 15:24:54'
 insert into prescription values(09002,'Onitório',96520520,'2018-10-01 15:24:54','laxil','intestiniti','10 capsulas de 100 mL','1 comprimido por dia');
 insert into prescription values(09002,'PiuPiu',35263686,'2018-08-01 12:45:02','levicim','emagricon','5 comprimidos de 20 mg','0.5 comprimido por dia');
 insert into prescription values(09002,'PiuPiu',35263686,'2018-08-01 12:45:02','laxil','intestiniti','10 capsulas de 100 mL','0.5 comprimido por dia');
-continuar !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+insert into prescription values(00045,'PiuPiu',35263686,'2018-08-01 12:45:02','Desparasis','TiraBicho','3 Capsulas de 20 mL','1 capsula por mês');
+insert into prescription values(00028,'Rapina',45620852,'2017-03-20 15:18:15','Bracite','Novosso','25 comprimidos de 150 mg','1 comprimido por dia');
+insert into prescription values(00028,'Rapina',45620852,'2017-03-20 15:18:15','Brufen','JAOS','20 comprimidos de 26g','1 comprimido de 8 em 8 horas');
+insert into prescription values(00028,'Rapina',45620852,'2017-03-20 15:18:15','benouron','SLS','20 comprimidos de 250 mg','1 comprimido por dia');
 
 
 /*indicator*/
@@ -302,13 +315,4 @@ insert into indicator values('Urine-Urea',16,'grams','Medido em g/24h');
 insert into indicator values('Urine-Uric Acid',400,'miligrams','Medido em mg/24h'); 
 insert into indicator values('Urine-pH',6,'pH','Sem unidade');
 
-/*procedure              */
-
-
-/*test_procedure              */
-
-
-/*radiography              */
-
-
-/*performed*/
+/*_procedure              */
