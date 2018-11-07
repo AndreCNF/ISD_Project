@@ -161,6 +161,7 @@ insert into animal values('Rapina',45620852,'Aguia','Castanho','feminino','2014'
 insert into animal values('Malandro',69630596,'Papagaio','Amarelo','masculino','2013',null);
 insert into animal values('Miau',45620852,'Cat','Preto','masculino','2015',null); 
 insert into animal values('Bobi',65856663,'Boston Terrier','Laranja','feminino','2017',null);
+insert into animal values('Riscas',45620852,'Boston Terrier','Castanho','masculino','2016',null);
 
 
 /*consult******************* name | VAT_owner | date_timestamp | s | o | a | p | VAT_client | VAT_vet | weight*/
@@ -179,7 +180,7 @@ insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) val
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight,s) values('Miau',45620852,'2017-06-15 16:25:16',45620852,85264856,'30', 'Good loss of weight');
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Bobi',65856663,'2018-09-11 18:16:24',65856663,12032014,'15');
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Malandro',69630596,'2015-06-16 15:16:17',69630596,85264856,'16');
-
+INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Riscas',45620852,'2016-05-15 16:32:12',45620852,85264856,'15');
 
 /*participation					name | VAT_owner | date_timestamp | VAT_assistant*/
 insert into participation values('Bobi',12345678,'2018-09-18 18:00:01',85202652);

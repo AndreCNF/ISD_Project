@@ -53,7 +53,7 @@ and prescription.dosage = medication.dosage
 group by diagnosis_code.code
 
 /*6*/
-select avg(count_assistants), avg(count_procedures), avg(count_diagnosis_code), avg(count_prescriptions)
+select avg(count_assistants) as 'Average num of assistants', avg(count_procedures) as 'Average num of procedures', avg(count_diagnosis_code) as 'Average num of diagnosis codes', avg(count_prescriptions) as 'Average num of prescriptions'
 from
 	(select count(participation.VAT_assistant) as count_assistants, consult.name, consult.VAT_owner, consult.date_timestamp
 	from consult natural left outer join participation
@@ -71,6 +71,12 @@ from
 	from consult natural left outer join prescription
 	where YEAR(consult.date_timestamp) = '2017'
 	group by consult.name, consult.VAT_owner, consult.date_timestamp) as prescriptions_table
+
+/*7 by Tiago*/
+SELECT *
+from generalization_species left outer join animal on animal.species_name = generalization_species.name1
+where name2 = 'Dog'
+/*[To be continued]*/
 
 /*7 by André*/
 select species_name as dog_breed, disease_name
