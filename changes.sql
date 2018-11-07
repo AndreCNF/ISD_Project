@@ -8,14 +8,14 @@ where name = 'John Smith';
 /*2.*/
 update reference_value
 set reference_value = reference_value*1.1
-from test_procedure as tp, produced_indicator as pi, indicator as i
+from test_procedure as tp, produced_indicator as pri, indicator as i
 where type = 'blood'
 and units = 'milligrams'
 and pi.indicator_name = i.name
-and tp.name = pi.name
-and tp.VAT_owner = pi.VAT_owner
-and tp.date_timestamp = pi.date_timestamp
-and tp.num = pi.num;
+and tp.name = pri.name
+and tp.VAT_owner = pri.VAT_owner
+and tp.date_timestamp = pri.date_timestamp
+and tp.num = pri.num;
 
 /*3.*/
 delete from person
@@ -29,6 +29,12 @@ insert into diagnosis_code
 values ('01008','end-stage renal disease')
 
 update diagnostic_code
-set diagnosis_code.code = , diagnosis_code.name =
-from test_procedure
-where test_procedure.type 
+set diagnosis_code.code = '01008' , diagnosis_code.name = 'end-stage renal disease'
+from test_procedure as tp, produced_indicator as pri
+where tp.name = pri.name
+and tp.VAT_owner = pri.VAT_owner
+and tp.date_timestamp = pri.date_timestamp
+and tp.num = pri.num
+and tp.type = 'blood' 
+and pri.indicator_name = 'creatinine level'
+and pri.value > 1.0
