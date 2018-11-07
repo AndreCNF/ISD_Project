@@ -58,52 +58,32 @@ from
 	(select count(participation.VAT_assistant) as count_assistants
 	from consult natural left outer join participation
 	where YEAR(date_timestamp) = '2017'
-	group by consult.name, consult.VAT_owner, consult.date_timestamp) natural left outer join
+	group by consult.name, consult.VAT_owner, consult.date_timestamp) as assistants_table natural left outer join
 	(select count(_procedure.num) as count_procedures
 	from consult natural left outer join _procedure
 	where YEAR(consult.date_timestamp) = '2017'
-	group by consult.name, consult.VAT_owner, consult.date_timestamp) natural left outer join
+	group by consult.name, consult.VAT_owner, consult.date_timestamp) as procedures_table natural left outer join
 	(select count(consult_diagnosis.code) as count_diagnosis_code
 	from consult natural left outer join consult_diagnosis
 	where YEAR(consult.date_timestamp) = '2017'
-	group by consult.name, consult.VAT_owner, consult.date_timestamp) natural left outer join
+	group by consult.name, consult.VAT_owner, consult.date_timestamp) as diagnosis_table natural left outer join
 	(select count(prescription.name_med) as count_prescriptions
 	from consult natural left outer join prescription
 	where YEAR(consult.date_timestamp) = '2017'
-	group by consult.name, consult.VAT_owner, consult.date_timestamp) as counts_table
-
--- Alternative (join the results, the average values, not the tables)
-(
-	select avg(count_assistants)
-	from (select count(participation.VAT_assistant) as count_assistants
-	from consult natural left outer join participation
-	where YEAR(date_timestamp) = '2017'
-	group by consult.name, consult.VAT_owner, consult.date_timestamp) as assistants_table
-)
-UNION
-(
-	select avg(count_procedures)
-	from (select count(_procedure.num) as count_procedures
-	from consult natural left outer join _procedure
-	where YEAR(consult.date_timestamp) = '2017'
-	group by consult.name, consult.VAT_owner, consult.date_timestamp) as procedures_table
-)
-UNION
-(
-	select avg(count_diagnosis_code)
-	from (select count(consult_diagnosis.code) as count_diagnosis_code
-	from consult natural left outer join consult_diagnosis
-	where YEAR(consult.date_timestamp) = '2017'
-	group by consult.name, consult.VAT_owner, consult.date_timestamp) as diagnosis_table
-)
-UNION
-(
-	select avg(count_prescriptions)
-	from (select count(prescription.name_med) as count_prescriptions
-	from consult natural left outer join prescription
-	where YEAR(consult.date_timestamp) = '2017'
 	group by consult.name, consult.VAT_owner, consult.date_timestamp) as prescriptions_table
-)
+
+/*7 by André*/
+select species_name as dog_breed, disease_name
+from
+	(select *, diagnosis_code.name as disease_name, count(code) as disease_count
+	from animal inner join consult_diagnosis 
+	on animal.name = consult_diagnosis.name and animal.VAT = consult_diagnosis.VAT_owner
+	inner join diagnosis_code on diagnosis_code.code = consult_diagnosis.code
+	where species_name in
+	(select name1
+	from generalization_species
+	where name2 = 'Dog')) as dog_diseases
+where disease_count >=all (select disease_count from dog_diseases group by species_name)
 		
 /*7 ver outra vez por causa das sub-species*/
 select animal_name, code

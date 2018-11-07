@@ -1,0 +1,38 @@
+select *, avg(count_prescriptions)
+from (select *, count(prescription.name_med) as count_prescriptions
+from consult natural left outer join prescription
+where YEAR(consult.date_timestamp) = '2017'
+group by consult.name, consult.VAT_owner, consult.date_timestamp) as prescriptions_table;
+
++--------+-----------+---------------------+---------------------+------+------+------+------------+----------+--------+-------+----------+------+--------------------------+----------------------+---------------------+
+| name   | VAT_owner | date_timestamp      | s                   | o    | a    | p    | VAT_client | VAT_vet  | weight | code  | name_med | lab  | dosage                   | regime               | count_prescriptions |
++--------+-----------+---------------------+---------------------+------+------+------+------------+----------+--------+-------+----------+------+--------------------------+----------------------+---------------------+
+| Miau   |  45620852 | 2017-06-15 16:25:16 | Good loss of weight | NULL | NULL | NULL |   45620852 | 85264856 |  30.00 | NULL  | NULL     | NULL | NULL                     | NULL                 |                   0 |
+| Rapina |  45620852 | 2017-03-20 15:18:15 | NULL                | NULL | NULL | NULL |   45620852 | 12032014 |  20.00 | 00028 | benouron | SLS  | 20 comprimidos de 250 mg | 1 comprimido por dia |                   4 |
++--------+-----------+---------------------+---------------------+------+------+------+------------+----------+--------+-------+----------+------+--------------------------+----------------------+---------------------+
+
+
+select avg(count_assistants), avg(count_procedures), avg(count_diagnosis_code), avg(count_prescriptions)
+from
+	(select count(participation.VAT_assistant) as count_assistants
+	from consult natural left outer join participation
+	where YEAR(date_timestamp) = '2017'
+	group by consult.name, consult.VAT_owner, consult.date_timestamp) as assistants_table natural left outer join
+	(select count(_procedure.num) as count_procedures
+	from consult natural left outer join _procedure
+	where YEAR(consult.date_timestamp) = '2017'
+	group by consult.name, consult.VAT_owner, consult.date_timestamp) as procedures_table natural left outer join
+	(select count(consult_diagnosis.code) as count_diagnosis_code
+	from consult natural left outer join consult_diagnosis
+	where YEAR(consult.date_timestamp) = '2017'
+	group by consult.name, consult.VAT_owner, consult.date_timestamp) as diagnosis_table natural left outer join
+	(select count(prescription.name_med) as count_prescriptions
+	from consult natural left outer join prescription
+	where YEAR(consult.date_timestamp) = '2017'
+	group by consult.name, consult.VAT_owner, consult.date_timestamp) as prescriptions_table;
+
++-----------------------+-----------------------+---------------------------+--------------------------+
+| avg(count_assistants) | avg(count_procedures) | avg(count_diagnosis_code) | avg(count_prescriptions) |
++-----------------------+-----------------------+---------------------------+--------------------------+
+|                0.5000 |                1.0000 |                    0.5000 |                   2.0000 |
++-----------------------+-----------------------+---------------------------+--------------------------+
