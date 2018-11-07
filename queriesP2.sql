@@ -55,19 +55,19 @@ group by diagnosis_code.code
 /*6*/
 select avg(count_assistants), avg(count_procedures), avg(count_diagnosis_code), avg(count_prescriptions)
 from
-	(select count(participation.VAT_assistant) as count_assistants
+	(select count(participation.VAT_assistant) as count_assistants, consult.name, consult.VAT_owner, consult.date_timestamp
 	from consult natural left outer join participation
 	where YEAR(date_timestamp) = '2017'
 	group by consult.name, consult.VAT_owner, consult.date_timestamp) as assistants_table natural left outer join
-	(select count(_procedure.num) as count_procedures
+	(select count(_procedure.num) as count_procedures, consult.name, consult.VAT_owner, consult.date_timestamp
 	from consult natural left outer join _procedure
 	where YEAR(consult.date_timestamp) = '2017'
 	group by consult.name, consult.VAT_owner, consult.date_timestamp) as procedures_table natural left outer join
-	(select count(consult_diagnosis.code) as count_diagnosis_code
+	(select count(consult_diagnosis.code) as count_diagnosis_code, consult.name, consult.VAT_owner, consult.date_timestamp
 	from consult natural left outer join consult_diagnosis
 	where YEAR(consult.date_timestamp) = '2017'
 	group by consult.name, consult.VAT_owner, consult.date_timestamp) as diagnosis_table natural left outer join
-	(select count(prescription.name_med) as count_prescriptions
+	(select count(prescription.name_med) as count_prescriptions, consult.name, consult.VAT_owner, consult.date_timestamp
 	from consult natural left outer join prescription
 	where YEAR(consult.date_timestamp) = '2017'
 	group by consult.name, consult.VAT_owner, consult.date_timestamp) as prescriptions_table
