@@ -1,17 +1,15 @@
 /*1.*/
-update person
+update person, client
 set address_street = 'Rua Giroflé, nº4', address_city = 'Leiria'
-from person
-inner join client on person.VAT = client.VAT
-where name = 'John Smith';
+where person.VAT = client.VAT
+and name = 'John Smith';
 
 /*2.*/
-update reference_value
+update indicator as i, test_procedure as tp, produced_indicator as pri
 set reference_value = reference_value*1.1
-from test_procedure as tp, produced_indicator as pri, indicator as i
 where type = 'blood'
 and units = 'milligrams'
-and pi.indicator_name = i.name
+and pri.indicator_name = i.name
 and tp.name = pri.name
 and tp.VAT_owner = pri.VAT_owner
 and tp.date_timestamp = pri.date_timestamp

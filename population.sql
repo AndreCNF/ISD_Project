@@ -309,18 +309,18 @@ insert into prescription values('00028','Rapina',45620852,'2017-03-20 15:18:15',
 
 
 /*indicator					name | reference_value | units | description*/
-insert into indicator values('Blood-Sodium',320,'miligrams','Medido em mg/dL');
-insert into indicator values('Blood-Potassium',17.5,'miligrams','Medido em mg/dL');
-insert into indicator values('Blood-Chloride',355,'miligrams','Medido em mg/dL');
-insert into indicator values('Blood-Ionized Calcium',4.4,'miligrams','Medido em mg/dL');
-insert into indicator values('Blood-Total Calcium',9,'miligrams','Medido em mg/dL');
+insert into indicator values('Blood-Sodium',320,'milligrams','Medido em mg/dL');
+insert into indicator values('Blood-Potassium',17.5,'milligrams','Medido em mg/dL');
+insert into indicator values('Blood-Chloride',355,'milligrams','Medido em mg/dL');
+insert into indicator values('Blood-Ionized Calcium',4.4,'milligrams','Medido em mg/dL');
+insert into indicator values('Blood-Total Calcium',9,'milligrams','Medido em mg/dL');
 insert into indicator values('Blood-Total Serum Iron',100,'micrograms','Medido em ug/dL');
-insert into indicator values('Blood-Magnesium',2,'miligrams','Medido em mg/dL');
-insert into indicator values('Blood-cholesterol',140,'miligrams','Medido em mg/dL');
-insert into indicator values('Urine-Potassium',60,'milimole','Medido em mmol/24h'); 
-insert into indicator values('Urine-Protein',10,'miligrams','Medido em mg/dL'); 
+insert into indicator values('Blood-Magnesium',2,'milligrams','Medido em mg/dL');
+insert into indicator values('Blood-cholesterol',140,'milligrams','Medido em mg/dL');
+insert into indicator values('Urine-Potassium',60,'millimole','Medido em mmol/24h'); 
+insert into indicator values('Urine-Protein',10,'milligrams','Medido em mg/dL'); 
 insert into indicator values('Urine-Urea',16,'grams','Medido em g/24h'); 
-insert into indicator values('Urine-Uric Acid',400,'miligrams','Medido em mg/24h'); 
+insert into indicator values('Urine-Uric Acid',400,'milligrams','Medido em mg/24h'); 
 insert into indicator values('Urine-pH',6,'pH','Sem unidade');
 
 
@@ -348,13 +348,13 @@ insert into test_procedure values('Luna',12345678,'2018-09-18 15:52:56',6136,'bl
 
 
 /*radiography				name | VAT_owner | date_timestamp | num | file*/
-insert into radiography values('Rapina',45620852,'2017-03-20 15:18:15',2903,'/Users/Vet/Documents/RapinaElbow.xray')
+insert into radiography values('Rapina',45620852,'2017-03-20 15:18:15',2903,'/Users/Vet/Documents/RapinaElbow.xray');
 
 
 /*produced_indicator		name | VAT_owner | date_timestamp | num | indicator_name | value*/
--- insert into produced_indicator values();
--- insert into produced_indicator values();
--- insert into produced_indicator values();
+insert into produced_indicator values('Luna',12345678,'2018-09-18 15:52:56',6136,'Blood-Sodium',322);
+insert into produced_indicator values('Luna',12345678,'2018-09-18 15:52:56',6136,'Blood-Total Serum Iron',150);
+insert into produced_indicator values('Luna',12345678,'2018-09-18 15:52:56',6136,'Blood-Ionized Calcium',4.4);
 -- insert into produced_indicator values();
 -- insert into produced_indicator values();
 -- insert into produced_indicator values();
