@@ -12,7 +12,8 @@ insert into person values(78526209,'Rui Espinola','Avenida Brasil, nº 24, 11º 
 insert into person values(45620852,'Renata Amorim','Rua da Serafina, nº 14', 'Picardães','8524-520');
 insert into person values(63065186,'Liliana Santos','Rua das Flores, nº 32','Carregado','2580-410');
 insert into person values(53250530,'Mário Fernandes','Rua D. Afonso Henriques, nº 6, 2ºE','Leiria','5320-632');
-insert into person values(63520543,'João Serra','Avinida São Paulo, nº5','Guimarães','6304-863');
+insert into person values(63520543,'João Serra','Avenida São Paulo, nº5','Guimarães','6304-863');
+insert into person values(54609438,'Manuel Quintas','Rua dos queijos, n˚42','Seia','6270-789');
 
 /*phone_number*/
 /*******************************  VAT   |   phone */
@@ -30,6 +31,7 @@ insert into phone_number values(45620852,'930536378');
 insert into phone_number values(63065186,'918206630');
 insert into phone_number values(53250530,'+63220185206');
 insert into phone_number values(63520543,'963025225');
+insert into phone_number values(54609438,'936723009');
 
 /*client*/
 /************************  VAT */
@@ -42,6 +44,7 @@ insert into client values(69630596);
 insert into client values(78526209);
 insert into client values(45620852);
 insert into client values(85264856);
+insert into client values(54609438);
 
 /*veterinary*/
 /****************************   VAT    | specializaion    |    bio*/
@@ -63,14 +66,14 @@ insert into species values('Cat','Animal peludo.');
 insert into species values('Pig','O porco doméstico(nome científico: Sus scrofa domesticus), ou simplesmente porco, é um mamífero bunodonte não-ruminante, da família dos suidae.');
 	/*Birds*/
 insert into species values('Bird', 'Coisa que potencialmente voa.');
-insert into species values('Papagaio','Ave falante');
-insert into species values('Canário','É um pássaro.');
-insert into species values('Águia','Ave de rapina com visão ótima');
-insert into species values('Pavão','Ave colorida e vaidosa');
-insert into species values('Piriquito','Ave de dimensão muito pequena');
+insert into species values('Parrot Bird','Ave falante');
+insert into species values('Canary Bird','É um pássaro.');
+insert into species values('Eagle','Ave de rapina com visão ótima');
+insert into species values('Peacock','Ave colorida e vaidosa');
+insert into species values('Mockingbird','Ave de dimensão muito pequena');
 insert into species values('Dog','O cão (nome científico: Canis lupus familiaris),[1] no Brasil também chamado de cachorro, é um mamífero carnívoro da família dos canídeos, subespécie do lobo, e talvez o mais antigo animal domesticado pelo ser humano.');
 	/*cão*/
-insert into species values('Afegão Hound','O porte altivo e sua silhueta ao mesmo tempo forte e flexível.');
+insert into species values('Afghan Hound','O porte altivo e sua silhueta ao mesmo tempo forte e flexível.');
 insert into species values('Affenpinscher','Esse pequeno cão de pelos rígidos, de trote muito curto e de grandes olhos redondos, possui uma expressão simiesca característica.');
 insert into species values('Airedale Terrier','Pelagem dura, densa e aramada, mas não tão longa. Ativo, musculoso, ágil e de movimentos rápidos e precisos. Sempre atento a tudo ao seu redor.');
 insert into species values('Akita','O Akita é uma grande e poderosa raça de cão, com uma presença nobre e intimidante.');
@@ -84,39 +87,40 @@ insert into species values('Bedlington Terrier','Bem humorado, tendo uma naturez
 insert into species values('Bichon Frisé','Bichons são ativos e famosos pelos "Bichon Blitz" ou "Bichon Buzz," surtos imprevisíveis de energia que causam frenesi e fazem os cães usarem o quintal ou mesmo a casa como uma pista de corrida, latindo, saltando pulando dentro e fora de móveis.');
 insert into species values('Bloodhound','Particularmente ligado a seu dono. Tolerante com seus companheiros de canil e outros animais domésticos. É antes de tudo reservado e obstinado. É sensível tanto aos elogios quanto às correções. Jamais agressivo. Sua voz é muito grave, mas ele não é um ladrador.');
 insert into species values('Bobtail','Dócil e de temperamento estável. Corajoso, fiel e confiável; não é de forma alguma tímido ou agressivo se não for provocado.');
-insert into species values('Boiadeiro Australiano','sse cão de tamanho médio é forte, sem ser pesado.');
-insert into species values('Boiadeiro Bernês','Confiável, atencioso, vigilante, corajoso diante de situações do cotidiano; amável e fiel para com a família; seguro de si e pacífico com estranhos; de temperamento moderado e dócil.');
+insert into species values('Australian Cattle Dog','Cão de tamanho médio é forte, sem ser pesado.');
+insert into species values('Bernese Mountain Dog','Confiável, atencioso, vigilante, corajoso diante de situações do cotidiano; amável e fiel para com a família; seguro de si e pacífico com estranhos; de temperamento moderado e dócil.');
 insert into species values('Border Collie','Muito simplesmente, o Border Collie é muito dinâmico. Sua personalidade é caracteristicamente alerta, energico, trabalhador e inteligente. Ele aprende rápido - tão rápido que às vezes é difícil ter desafios novos para ele.');
 insert into species values('Border Terrier','Esse Terrier tem o corpo um tanto alto e a cabeça peculiar, com grandes olhos muito expressivos.');
 insert into species values('Borzoi','Possui um olhar penetrante, capaz de enxergar muito longe. Sua reação é impetuosa. Cão grande, de aspecto aristocrático e grande harmonia de formas e movimentos. Não é barulhento e, como todo galgo, é um velocista nato');
 insert into species values('Boston Terrier','Adora brincar e passear, mas é preciso cuidado durante os exercícios físicos, pois não tolera atividades intensas nem temperaturas extremas. Pacífico, esse antigo combatente muito ativo, tornou-se um animal de companhia muito apreciado.');
 insert into species values('Boxer','O Boxer é muito inteligente e brincalhão, Leva muito a sério seu papel como cão de guarda. É um excelente companheiro e cuida da sua família com muito zelo.');
-insert into species values('Buldogue Francês','Frenchies são conhecidos por sua atenção tranquila. Eles seguem seus tutores por toda casa, sem fazer incomodar em nada. Quando eles querem a sua atenção, eles vão carinhosamente cutucar você com a pata.');
-insert into species values('Buldogue Inglês','Cão de pelo curto, com o corpo muito perto do chão e pesado para seu tamanho');
+insert into species values('French Bulldog','Frenchies são conhecidos por sua atenção tranquila. Eles seguem seus tutores por toda casa, sem fazer incomodar em nada. Quando eles querem a sua atenção, eles vão carinhosamente cutucar você com a pata.');
+insert into species values('English Bulldog','Cão de pelo curto, com o corpo muito perto do chão e pesado para seu tamanho');
 insert into species values('Bull Terrier','Fortemente estruturado e bem proporcional, esse cão ativo move-se com largas passadas, com um ritmo regular que lhe é próprio.');
 insert into species values('Bulmastife','Cão fortemente estruturado mas harmonioso. passa a impressão de grande força, sem ser pesado.');
 insert into species values('Cairn Terrier','Sua impressão geral é a de um Terrier rústico, sólido, ágil e cheio de ardor.');
 insert into species values('Cane Corso','Um excelente guardião muito apegado ao dono.');
-insert into species values('Cão de Água Português','Tem a expressão dura e um olhar penetrante e atento. Possui grande poder visual e apreciável sensibilidade olfativa. Nadador e mergulhador exímio e resistente, é o companheiro inseparável do pescador, a quem presta inúmeros serviços, não só pescando, mas também guardando e defendendo seu barco.');
-insert into species values('Cão de Crista Chinês','Ele é um excelente companheiro e é extremamente inteligente. É pequeno, gracioso, esbelto e ativo. Praticamente não tem pelos.');
+insert into species values('Portuguese Water Dog','Tem a expressão dura e um olhar penetrante e atento. Possui grande poder visual e apreciável sensibilidade olfativa. Nadador e mergulhador exímio e resistente, é o companheiro inseparável do pescador, a quem presta inúmeros serviços, não só pescando, mas também guardando e defendendo seu barco.');
+insert into species values('Estrela Mountain Dog','A inteligência, lealdade e beleza do Cão da Serra da Estrela fazem dele, para além de um cão de guarda de excelência, um óptimo cão de família.');
+insert into species values('Chinese Crested Dog','Ele é um excelente companheiro e é extremamente inteligente. É pequeno, gracioso, esbelto e ativo. Praticamente não tem pelos.');
 insert into species values('Cavalier King Charles Spaniel','O Cavalier King Charles Spaniel é pequeno, amoroso e brincalhão. O típico Cavalier está sempre feliz, confiante e descontraído, um amigo para todos que encontra. Fiel à sua herança como "cães de cachecol," Cavaliers gostam de estar em uma colo.');
 insert into species values('Chesapeake Bay Retriever','O Chesapeake Bay Retriever é um cão grande e elegante, de belas proporções.');
 insert into species values('Chihuahua','O Chihuahua é muito atento e um vigia barulhento no caso de qualquer intrusão no seu território, real ou imaginado.');
 insert into species values('Chow Chow','Apesar de sua carranca, um bom Chow nunca deve ser agressivo . Ele é independente e digno, normalmente se apega a uma unica pessoa.');
-insert into species values('Cocker Spaniel Americano','Ele é afetuoso, carinhoso e gosta de participar de atividades familiares. Está disposto para fazer qualquer tipo de exercício ou uma rápida caminhada.');
-insert into species values('Cocker Spaniel Inglês','O Cocker Inglês é descrito como alegre e carinhoso com uma disposição constante. Ele é brincalhão, treinável, e amigável para com as pessoas (embora às vezes reservado com estranhos) e outros cães.');
+insert into species values('American Cocker Spaniel','Ele é afetuoso, carinhoso e gosta de participar de atividades familiares. Está disposto para fazer qualquer tipo de exercício ou uma rápida caminhada.');
+insert into species values('English Cocker Spaniel','O Cocker Inglês é descrito como alegre e carinhoso com uma disposição constante. Ele é brincalhão, treinável, e amigável para com as pessoas (embora às vezes reservado com estranhos) e outros cães.');
 
 /*generalization_species*/
 /********************************* name1   | name2*/
 insert into generalization_species values('Pig','Mammal');
 insert into generalization_species values('Cat','Mammal');
 insert into generalization_species values('Dog','Mammal');
-insert into generalization_species values('Piriquito','Bird');
-insert into generalization_species values('Pavão','Bird');
-insert into generalization_species values('Águia','Bird');
-insert into generalization_species values('Papagaio','Bird');
-insert into generalization_species values('Canário','Bird');
-insert into generalization_species values('Afegão Hound','Dog');
+insert into generalization_species values('Mockingbird','Bird');
+insert into generalization_species values('Peacock','Bird');
+insert into generalization_species values('Eagle','Bird');
+insert into generalization_species values('Parrot Bird','Bird');
+insert into generalization_species values('Canary Bird','Bird');
+insert into generalization_species values('Afghan Hound','Dog');
 insert into generalization_species values('Affenpinscher','Dog');
 insert into generalization_species values('Airedale Terrier','Dog');
 insert into generalization_species values('Akita','Dog');
@@ -130,42 +134,46 @@ insert into generalization_species values('Bedlington Terrier','Dog');
 insert into generalization_species values('Bichon Frisé','Dog');
 insert into generalization_species values('Bloodhound','Dog');
 insert into generalization_species values('Bobtail','Dog');
-insert into generalization_species values('Boiadeiro Australiano','Dog');
-insert into generalization_species values('Boiadeiro Bernês','Dog');
+insert into generalization_species values('Australian Cattle Dog','Dog');
+insert into generalization_species values('Bernese Mountain Dog','Dog');
 insert into generalization_species values('Border Collie','Dog');
 insert into generalization_species values('Border Terrier','Dog');
 insert into generalization_species values('Borzoi','Dog');
 insert into generalization_species values('Boston Terrier','Dog');
 insert into generalization_species values('Boxer','Dog');
-insert into generalization_species values('Buldogue Francês','Dog');
-insert into generalization_species values('Buldogue Inglês','Dog');
+insert into generalization_species values('French Bulldog','Dog');
+insert into generalization_species values('English Bulldog','Dog');
 insert into generalization_species values('Bull Terrier','Dog');
 insert into generalization_species values('Bulmastife','Dog');
 insert into generalization_species values('Cairn Terrier','Dog');
 insert into generalization_species values('Cane Corso','Dog');
-insert into generalization_species values('Cão de Água Português','Dog');
-insert into generalization_species values('Cão de Crista Chinês','Dog');
+insert into generalization_species values('Portuguese Water Dog','Dog');
+insert into generalization_species values('Estrela Mountain Dog', 'Dog');
+insert into generalization_species values('Chinese Crested Dog','Dog');
 insert into generalization_species values('Cavalier King Charles Spaniel','Dog');
 insert into generalization_species values('Chesapeake Bay Retriever','Dog');
 insert into generalization_species values('Chihuahua','Dog');
 insert into generalization_species values('Chow Chow','Dog');
-insert into generalization_species values('Cocker Spaniel Americano','Dog');
-insert into generalization_species values('Cocker Spaniel Inglês','Dog');
+insert into generalization_species values('American Cocker Spaniel','Dog');
+insert into generalization_species values('English Cocker Spaniel','Dog');
 
 /*animal*/
 /*********************     name |   VAT  |species_name|colour|gender|birth_year|age*/
-insert into animal values('Bobi',12345678,'Boxer','castanho','masculino','2013',null);
-insert into animal values('Luna',12345678,'Cão de Crista Chinês','branco','feminino','2015',null);
-insert into animal values('Pala',96520520,'Bobtail','preto','feminino','2016',null);
-insert into animal values('Onitório',96520520,'Basset Hound','castanho','masculino','2013',null);
-insert into animal values('PiuPiu',35263686,'Piriquito','Amarelo','masculino','2018',null);
-insert into animal values('FalaFala',69630596,'Papagaio','Vermelho','feminino','2011',null);
-insert into animal values('Rapina',45620852,'Aguia','Castanho','feminino','2014',null);
-insert into animal values('Malandro',69630596,'Papagaio','Amarelo','masculino','2013',null);
-insert into animal values('Miau',45620852,'Cat','Preto','masculino','2015',null); 
-insert into animal values('Bobi',65856663,'Boston Terrier','Laranja','feminino','2017',null);
-insert into animal values('Riscas',45620852,'Boston Terrier','Castanho','masculino','2016',null);
-insert into animal values('Peggy',85264856,'Pig','Rosa','feminino','2015',null);
+insert into animal values('Bobi',12345678,'Boxer','Brown','Male','2013',null);
+insert into animal values('Luna',12345678,'Chinese Crested Dog','White','Female','2015',null);
+insert into animal values('Pala',96520520,'Bobtail','Dark','Female','2016',null);
+insert into animal values('Onitório',96520520,'Basset Hound','Brown','Male','2013',null);
+insert into animal values('PiuPiu',35263686,'Mockingbird','Yellow','Male','2018',null);
+insert into animal values('FalaFala',69630596,'Parrot Bird','Red','Female','2011',null);
+insert into animal values('Rapina',45620852,'Eagle','Brown','Female','2014',null);
+insert into animal values('Malandro',69630596,'Parrot Bird','Yellow','Male','2013',null);
+insert into animal values('Miau',45620852,'Cat','Dark','Male','2015',null); 
+insert into animal values('Bobi',65856663,'Boston Terrier','Orange','Female','2017',null);
+insert into animal values('Riscas',45620852,'Boston Terrier','Brown','Male','2016',null);
+insert into animal values('Peggy',85264856,'Pig','Pink','Female','2015',null);
+insert into animal values('Papinhas',54609438,'Estrela Mountain Dog','Brown','Male','2018',null);
+insert into animal values('Iris',54609438,'Peacock','Green','Female','2007',null);
+insert into animal values('Matumbe',54609438,'Canary Bird','Yellow','Male','2009',null);
 
 /*consult******************* name | VAT_owner | date_timestamp | s | o | a | p | VAT_client | VAT_vet | weight*/
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Bobi',12345678,'2018-09-18 18:00:01',12345678,12032014,'27');

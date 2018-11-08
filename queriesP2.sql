@@ -172,6 +172,15 @@ where VAT in(
 	from veterinary
 	)
 )
+
+/*9 by André*/
+SELECT name, address_city, address_zip
+FROM (SELECT person.name, person.VAT, address_city, address_zip, species_name
+	FROM person INNER JOIN animal
+	ON person.VAT = animal.VAT) AS pet_owner_table
+GROUP BY name, address_city, address_zip
+HAVING COUNT(species_name) = COUNT(CASE WHEN species_name LIKE "%bird%" THEN 1 END);
+
 /*9*/
 select person.name, person.address_street, person.address_city, person.address_zip
 from animal

@@ -1,0 +1,38 @@
+SELECT person.name, person.VAT, address_city, address_zip, species_name
+	FROM person INNER JOIN animal
+	ON person.VAT = animal.VAT;
+
++-----------------+----------+-------------------------+-------------+----------------------+
+| name            | VAT      | address_city            | address_zip | species_name         |
++-----------------+----------+-------------------------+-------------+----------------------+
+| Maria Repolho   | 12345678 | Rebalba                 | 2650-852    | Boxer                |
+| Maria Repolho   | 12345678 | Rebalba                 | 2650-852    | Chinese Crested Dog  |
+| Maria Albertina | 35263686 | Amadora                 | 8274-653    | Mockingbird          |
+| Renata Amorim   | 45620852 | Picardães               | 8524-520    | Cat                  |
+| Renata Amorim   | 45620852 | Picardães               | 8524-520    | Eagle                |
+| Renata Amorim   | 45620852 | Picardães               | 8524-520    | Boston Terrier       |
+| Manuel Quintas  | 54609438 | Seia                    | 6270-789    | Peacock              |
+| Manuel Quintas  | 54609438 | Seia                    | 6270-789    | Canary Bird          |
+| Manuel Quintas  | 54609438 | Seia                    | 6270-789    | Estrela Mountain Dog |
+| Tiago Vasques   | 65856663 | Castanheira do Ribatejo | 8641-068    | Boston Terrier       |
+| Sara Pimpalho   | 69630596 | Grandola                | 2504-974    | Parrot Bird          |
+| Sara Pimpalho   | 69630596 | Grandola                | 2504-974    | Parrot Bird          |
+| John Smith      | 85264856 | Cascais                 | 9525-903    | Pig                  |
+| Penelope Franco | 96520520 | Amadora                 | 8274-653    | Basset Hound         |
+| Penelope Franco | 96520520 | Amadora                 | 8274-653    | Bobtail              |
++-----------------+----------+-------------------------+-------------+----------------------+
+
+
+SELECT name, address_city, address_zip
+FROM (SELECT person.name, person.VAT, address_city, address_zip, species_name
+	FROM person INNER JOIN animal
+	ON person.VAT = animal.VAT) AS pet_owner_table
+GROUP BY name, address_city, address_zip
+HAVING COUNT(species_name) = COUNT(CASE WHEN species_name LIKE "%bird%" THEN 1 END);
+
++-----------------+--------------+-------------+
+| name            | address_city | address_zip |
++-----------------+--------------+-------------+
+| Maria Albertina | Amadora      | 8274-653    |
+| Sara Pimpalho   | Grandola     | 2504-974    |
++-----------------+--------------+-------------+

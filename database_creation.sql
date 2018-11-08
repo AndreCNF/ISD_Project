@@ -1,4 +1,4 @@
-SET FOREIGN_KEY_CHECKS = 0; /*para não ter de apagar as tabelas na ordeminversa da escrita*/
+SET FOREIGN_KEY_CHECKS = 0; /*para não ter de apagar as tabelas na ordem inversa da escrita*/
 drop table if exists person;
 drop table if exists phone_number;
 drop table if exists client;

@@ -1,0 +1,70 @@
+(SELECT person.name, person.VAT
+	FROM client INNER JOIN consult
+	ON client.VAT = consult.VAT_owner
+	INNER JOIN person
+	ON person.VAT = client.VAT)
+	UNION
+	(SELECT person.name, person.VAT
+	FROM client INNER JOIN consult
+	ON client.VAT = consult.VAT_client
+	INNER JOIN person
+	ON person.VAT = client.VAT);
+
++-----------------+----------+
+| name            | VAT      |
++-----------------+----------+
+| Maria Repolho   | 12345678 |
+| Penelope Franco | 96520520 |
+| Maria Albertina | 35263686 |
+| Renata Amorim   | 45620852 |
+| Tiago Vasques   | 65856663 |
+| Sara Pimpalho   | 69630596 |
+| John Smith      | 85264856 |
++-----------------+----------+
+
+
+(SELECT person.VAT
+	FROM assistant INNER JOIN person
+	ON person.VAT = assistant.VAT)
+	UNION
+	(SELECT person.VAT
+	FROM veterinary INNER JOIN person
+	ON person.VAT = veterinary.VAT);
+
++----------+
+| VAT      |
++----------+
+| 53250530 |
+| 63065186 |
+| 63520543 |
+| 85202652 |
+| 12032014 |
+| 85264856 |
++----------+
+
+
+SELECT DISTINCT name, VAT
+FROM ((SELECT person.name, person.VAT
+	FROM client INNER JOIN consult
+	ON client.VAT = consult.VAT_owner
+	INNER JOIN person
+	ON person.VAT = client.VAT)
+	UNION
+	(SELECT person.name, person.VAT
+	FROM client INNER JOIN consult
+	ON client.VAT = consult.VAT_client
+	INNER JOIN person
+	ON person.VAT = client.VAT)) AS clients_table
+NATURAL JOIN ((SELECT person.VAT
+	FROM assistant INNER JOIN person
+	ON person.VAT = assistant.VAT)
+	UNION
+	(SELECT person.VAT
+	FROM veterinary INNER JOIN person
+	ON person.VAT = veterinary.VAT)) AS staff_table;
+
++------------+----------+
+| name       | VAT      |
++------------+----------+
+| John Smith | 85264856 |
++------------+----------+
