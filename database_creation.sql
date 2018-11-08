@@ -1,211 +1,211 @@
 SET FOREIGN_KEY_CHECKS = 0; /*para não ter de apagar as tabelas na ordem inversa da escrita*/
-drop table if exists person;
-drop table if exists phone_number;
-drop table if exists client;
-drop table if exists veterinary;
-drop table if exists assistant;
-drop table if exists species;
-drop table if exists generalization_species;
-drop table if exists animal;
-drop table if exists consult; 
-drop table if exists participation;
-drop table if exists diagnosis_code;
-drop table if exists consult_diagnosis;
-drop table if exists medication;
-drop table if exists prescription;
-drop table if exists indicator;
-drop table if exists _procedure;
-drop table if exists performed;
-drop table if exists radiography;
-drop table if exists test_procedure;
-drop table if exists produced_indicator;
+DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS phone_number;
+DROP TABLE IF EXISTS client;
+DROP TABLE IF EXISTS veterinary;
+DROP TABLE IF EXISTS assistant;
+DROP TABLE IF EXISTS species;
+DROP TABLE IF EXISTS generalization_species;
+DROP TABLE IF EXISTS animal;
+DROP TABLE IF EXISTS consult; 
+DROP TABLE IF EXISTS participation;
+DROP TABLE IF EXISTS diagnosis_code;
+DROP TABLE IF EXISTS consult_diagnosis;
+DROP TABLE IF EXISTS medication;
+DROP TABLE IF EXISTS prescription;
+DROP TABLE IF EXISTS indicator;
+DROP TABLE IF EXISTS _procedure;
+DROP TABLE IF EXISTS performed;
+DROP TABLE IF EXISTS radiography;
+DROP TABLE IF EXISTS test_procedure;
+DROP TABLE IF EXISTS produced_indicator;
 SET FOREIGN_KEY_CHECKS = 1;
 
-create table person(
-	VAT integer,
-	name char(100) not null,
-	address_street char(100) not null,
-	address_city char(50) not null,
-	address_zip char(15) not null,
-	primary key(VAT)
+CREATE TABLE person(
+	VAT INTEGER,
+	name CHAR(100) NOT NULL,
+	address_street CHAR(100) NOT NULL,
+	address_city CHAR(50) NOT NULL,
+	address_zip CHAR(15) NOT NULL,
+	PRIMARY KEY(VAT)
 );
 
 /*METER CONSTRAINT*/
-create table phone_number(
-	VAT integer,
-	phone char(15), /*to be extensible to different kinds of phone structures*/
-	primary key(VAT, phone),
-	foreign key(VAT) references person(VAT) on delete cascade on update cascade
+CREATE TABLE phone_number(
+	VAT INTEGER,
+	phone CHAR(15), /*to be extensible to different kinds of phone structures*/
+	PRIMARY KEY(VAT, phone),
+	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-create table client(
-	VAT integer,
-	primary key(VAT),
-	foreign key(VAT) references person(VAT) on delete cascade on update cascade
+CREATE TABLE client(
+	VAT INTEGER,
+	PRIMARY KEY(VAT),
+	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table veterinary(
-	VAT integer,
-	specialization char(50) not null,
-	bio text not null,
-	primary key(VAT),
-	foreign key(VAT) references person(VAT) on delete cascade on update cascade
+CREATE TABLE veterinary(
+	VAT INTEGER,
+	specialization CHAR(50) NOT NULL,
+	bio TEXT NOT NULL,
+	PRIMARY KEY(VAT),
+	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table assistant(
-	VAT integer,
-	primary key(VAT),
-	foreign key(VAT) references person(VAT) on delete cascade on update cascade
+CREATE TABLE assistant(
+	VAT INTEGER,
+	PRIMARY KEY(VAT),
+	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table species(
-	name char(50),
-	desc_ text not null,
-	primary key(name)
+CREATE TABLE species(
+	name CHAR(50),
+	desc_ TEXT NOT NULL,
+	PRIMARY KEY(name)
 );
 
-create table generalization_species(
-	name1 char(50),
-	name2 char(50) not null,
-	primary key(name1),
-	foreign key(name1) references species(name) on delete cascade on update cascade,
-	foreign key(name2) references species(name) on delete cascade on update cascade
+CREATE TABLE generalization_species(
+	name1 CHAR(50),
+	name2 CHAR(50) NOT NULL,
+	PRIMARY KEY(name1),
+	FOREIGN KEY(name1) REFERENCES species(name) ON DELETE CASCADE ON UPDATE cascade,
+	FOREIGN KEY(name2) REFERENCES species(name) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table animal(
-	name char(50),
-	VAT integer,
-	species_name char(50) not null, 
-	colour char(20) not null,
-	gender char(20) not null,
+CREATE TABLE animal(
+	name CHAR(50),
+	VAT INTEGER,
+	species_name CHAR(50) NOT NULL, 
+	colour CHAR(20) NOT NULL,
+	gender CHAR(20) NOT NULL,
 	birth_year year,
-	age integer,
-	primary key(name,VAT),
-	foreign key(VAT) references client(VAT) on delete cascade on update cascade,
-	foreign key(species_name) references species(name) on delete cascade on update cascade
+	age INTEGER,
+	PRIMARY KEY(name,VAT),
+	FOREIGN KEY(VAT) REFERENCES client(VAT) ON DELETE CASCADE ON UPDATE cascade,
+	FOREIGN KEY(species_name) REFERENCES species(name) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table consult(
-	name char(50),
-	VAT_owner integer,
-	date_timestamp timestamp,
-	s text,
-	o text,
-	a text,
-	p text,
-	VAT_client integer not null, 
-	VAT_vet integer not null,
-	weight numeric(5,2) not null,
-	primary key(name,VAT_owner,date_timestamp),
-	foreign key(name,VAT_owner) references animal(name,VAT) on delete cascade on update cascade,
-	foreign key(VAT_client) references client(VAT) on delete cascade on update cascade,
-	foreign key(VAT_vet) references veterinary(VAT) on delete cascade on update cascade
+CREATE TABLE consult(
+	name CHAR(50),
+	VAT_owner INTEGER,
+	date_timestamp TIMESTAMP,
+	s TEXT,
+	o TEXT,
+	a TEXT,
+	p TEXT,
+	VAT_client INTEGER NOT NULL, 
+	VAT_vet INTEGER NOT NULL,
+	weight NUMERIC(5,2) NOT NULL,
+	PRIMARY KEY(name,VAT_owner,date_timestamp),
+	FOREIGN KEY(name,VAT_owner) REFERENCES animal(name,VAT) ON DELETE CASCADE ON UPDATE cascade,
+	FOREIGN KEY(VAT_client) REFERENCES client(VAT) ON DELETE CASCADE ON UPDATE cascade,
+	FOREIGN KEY(VAT_vet) REFERENCES veterinary(VAT) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table participation(
-	name char(50),
-	VAT_owner integer,
-	date_timestamp timestamp,
-	VAT_assistant integer,
-	primary key(name,VAT_owner,date_timestamp,VAT_assistant),
-	foreign key(name,VAT_owner,date_timestamp) references consult(name,VAT_owner,date_timestamp) on delete cascade on update cascade,
-	foreign key(VAT_assistant) references assistant(VAT) on delete cascade on update cascade
+CREATE TABLE participation(
+	name CHAR(50),
+	VAT_owner INTEGER,
+	date_timestamp TIMESTAMP,
+	VAT_assistant INTEGER,
+	PRIMARY KEY(name,VAT_owner,date_timestamp,VAT_assistant),
+	FOREIGN KEY(name,VAT_owner,date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade,
+	FOREIGN KEY(VAT_assistant) REFERENCES assistant(VAT) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table diagnosis_code(
-	code char(5), /*It was chosen a char instead of integer so that the zeros before the number were also printed*/
-	name char(100),
-	primary key (code)
+CREATE TABLE diagnosis_code(
+	code CHAR(5), /*It was chosen a CHAR instead of integer so that the zeros before the number were also printed*/
+	name CHAR(100),
+	PRIMARY KEY (code)
 );
 
-create table consult_diagnosis(
-	code char(5),
-	name char(50),
-	VAT_owner integer,
-	date_timestamp timestamp,
-	primary key(code,name,VAT_owner,date_timestamp),
-	foreign key(code) references diagnosis_code(code) on delete cascade on update cascade,
-	foreign key(name,VAT_owner,date_timestamp) references consult(name,VAT_owner,date_timestamp) on delete cascade on update cascade	
+CREATE TABLE consult_diagnosis(
+	code CHAR(5),
+	name CHAR(50),
+	VAT_owner INTEGER,
+	date_timestamp TIMESTAMP,
+	PRIMARY KEY(code,name,VAT_owner,date_timestamp),
+	FOREIGN KEY(code) REFERENCES diagnosis_code(code) ON DELETE CASCADE ON UPDATE cascade,
+	FOREIGN KEY(name,VAT_owner,date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade	
 );
 
-create table medication(
-    name char(20),
-    lab char(20),
-    dosage char(100),
-    primary key(name, lab, dosage)
+CREATE TABLE medication(
+    name CHAR(20),
+    lab CHAR(20),
+    dosage CHAR(100),
+    PRIMARY KEY(name, lab, dosage)
 );
 
-create table prescription(
-    code char(5),
-    name char(50),
-    VAT_owner integer,
-    date_timestamp timestamp,
-    name_med char(20) not null,
-    lab char(20) not null,
-    dosage char(100) not null,
-    regime char(100) not null,
-    primary key(code, name, VAT_owner, date_timestamp, name_med, lab, dosage),
-    foreign key(code, name, VAT_owner, date_timestamp) references consult_diagnosis(code,name,VAT_owner,date_timestamp) on delete cascade on update cascade,
-    foreign key(name_med,lab,dosage) references medication(name, lab, dosage) on delete cascade on update cascade
+CREATE TABLE prescription(
+    code CHAR(5),
+    name CHAR(50),
+    VAT_owner INTEGER,
+    date_timestamp TIMESTAMP,
+    name_med CHAR(20) NOT NULL,
+    lab CHAR(20) NOT NULL,
+    dosage CHAR(100) NOT NULL,
+    regime CHAR(100) NOT NULL,
+    PRIMARY KEY(code, name, VAT_owner, date_timestamp, name_med, lab, dosage),
+    FOREIGN KEY(code, name, VAT_owner, date_timestamp) REFERENCES consult_diagnosis(code,name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade,
+    FOREIGN KEY(name_med,lab,dosage) REFERENCES medication(name, lab, dosage) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table indicator(
-    name char(30),
-    reference_value numeric(5, 2) not null, /*to allow float numbers*/
-    units char(20) not null,
-    description text not null,
-    primary key(name)
+CREATE TABLE indicator(
+    name CHAR(30),
+    reference_value NUMERIC(5, 2) NOT NULL, /*to allow float numbers*/
+    units CHAR(20) NOT NULL,
+    description TEXT NOT NULL,
+    PRIMARY KEY(name)
 );
 
-create table _procedure(
-    name char(50),
-	VAT_owner integer,
-	date_timestamp timestamp,
-	num integer,
-	description text not null,
-	primary key(name, VAT_owner, date_timestamp, num),
-	foreign key(name, VAT_owner, date_timestamp) references consult(name,VAT_owner,date_timestamp) on delete cascade on update cascade
+CREATE TABLE _procedure(
+    name CHAR(50),
+	VAT_owner INTEGER,
+	date_timestamp TIMESTAMP,
+	num INTEGER,
+	description TEXT NOT NULL,
+	PRIMARY KEY(name, VAT_owner, date_timestamp, num),
+	FOREIGN KEY(name, VAT_owner, date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table performed(
-    name char(50),
-	VAT_owner integer,
-	date_timestamp timestamp,
-	num integer,
-	VAT_assistant integer,
-	primary key(name, VAT_owner, date_timestamp, num, VAT_assistant),
-	foreign key(name, VAT_owner, date_timestamp, num) references _procedure(name,VAT_owner,date_timestamp,num) on delete cascade on update cascade,
-	foreign key(VAT_assistant) references assistant(VAT) on delete cascade on update cascade
+CREATE TABLE performed(
+    name CHAR(50),
+	VAT_owner INTEGER,
+	date_timestamp TIMESTAMP,
+	num INTEGER,
+	VAT_assistant INTEGER,
+	PRIMARY KEY(name, VAT_owner, date_timestamp, num, VAT_assistant),
+	FOREIGN KEY(name, VAT_owner, date_timestamp, num) REFERENCES _procedure(name,VAT_owner,date_timestamp,num) ON DELETE CASCADE ON UPDATE cascade,
+	FOREIGN KEY(VAT_assistant) REFERENCES assistant(VAT) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table radiography(
-    name char(50),
-    VAT_owner integer,
-    date_timestamp timestamp,
-    num integer,
-    file char(100) not null,
-    primary key(name,VAT_owner,date_timestamp,num),
-    foreign key (name,VAT_owner,date_timestamp,num) references _procedure(name, VAT_owner, date_timestamp, num) on delete cascade on update cascade
+CREATE TABLE radiography(
+    name CHAR(50),
+    VAT_owner INTEGER,
+    date_timestamp TIMESTAMP,
+    num INTEGER,
+    file CHAR(100) NOT NULL,
+    PRIMARY KEY(name,VAT_owner,date_timestamp,num),
+    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES _procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table test_procedure(
-    name char(50),
-    VAT_owner integer,
-    date_timestamp timestamp,
-    num integer,
-    type char(5) not null,
+CREATE TABLE test_procedure(
+    name CHAR(50),
+    VAT_owner INTEGER,
+    date_timestamp TIMESTAMP,
+    num INTEGER,
+    type CHAR(5) NOT NULL,
     CONSTRAINT type_RI CHECK(type='blood' OR type='urine'),
-    primary key(name,VAT_owner,date_timestamp,num),
-    foreign key (name,VAT_owner,date_timestamp,num) references _procedure(name, VAT_owner, date_timestamp, num) on delete cascade on update cascade
+    PRIMARY KEY(name,VAT_owner,date_timestamp,num),
+    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES _procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE cascade
 );
 
-create table produced_indicator(
-    name char(50),
-    VAT_owner integer,
-    date_timestamp timestamp,
-    num integer,
-    indicator_name char(30),
-    value numeric(5, 2) not null,
-    primary key(name,VAT_owner,date_timestamp,num, indicator_name),
-    foreign key (name,VAT_owner,date_timestamp,num) references test_procedure(name, VAT_owner, date_timestamp, num) on delete cascade on update cascade
+CREATE TABLE produced_indicator(
+    name CHAR(50),
+    VAT_owner INTEGER,
+    date_timestamp TIMESTAMP,
+    num INTEGER,
+    indicator_name CHAR(30),
+    value NUMERIC(5, 2) NOT NULL,
+    PRIMARY KEY(name,VAT_owner,date_timestamp,num, indicator_name),
+    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES test_procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE cascade
 );
