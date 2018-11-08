@@ -1,8 +1,8 @@
 /*1.*/
 update person
 set address_street = 'Rua Giroflé, nº4', address_city = 'Leiria'
-from person, client
-where person.VAT = client.VAT
+from person
+inner join client on person.VAT = client.VAT
 where name = 'John Smith';
 
 /*2.*/

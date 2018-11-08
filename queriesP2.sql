@@ -73,17 +73,25 @@ from
 	group by consult.name, consult.VAT_owner, consult.date_timestamp) as prescriptions_table
 
 /*7 by Tiago*/
-SELECT *
-from generalization_species left outer join animal on animal.species_name = generalization_species.name1
-where name2 = 'Dog'
-/*[To be continued]*/
+SELECT species_name,code,ct
+from (
+SELECT species_name,code, count(code) ct
+from animal natural join consult_diagnosis
+where species_name in(
+	SELECT name1
+	FROM generalization_species
+	where name2 = 'Dog'
+)
+GROUP by species_name,code
+order by ct desc) as table_aux
+group by species_name
 
 /*7 by André*/
 select species_name as dog_breed, disease_name
 from
 	(select *, diagnosis_code.name as disease_name, count(code) as disease_count
 	from animal inner join consult_diagnosis 
-	on animal.name = consult_diagnosis.name and animal.VAT = consult_diagnosis.VAT_owner
+	on animal.name = consult_diagnosis.name and animal.VAT = consult_diagnosis.VAT_owner 
 	inner join diagnosis_code on diagnosis_code.code = consult_diagnosis.code
 	where species_name in
 	(select name1
@@ -120,13 +128,27 @@ from ((select animal.VAT
 	from consult
 	inner join client on consult.VAT_owner = client.VAT))
 	where animal.VAT in(
-		(select veterinary.VAT
-		from veterinary)
-		union
-		(select assistant.VAT
-		from assistant))
+	(select veterinary.VAT
+	from veterinary)
+	union
+	(select assistant.VAT
+	from assistant))
 inner join person on person.VAT = animal.VAT
 
+/*8 by Tiago*/
+select name
+from person
+where VAT in(
+	SELECT VAT
+	from client
+	where VAT in(
+	SELECT VAT
+	from assistant
+	union
+	Select VAT
+	from veterinary
+	)
+)
 /*9*/
 select person.name, person.address_street, person.address_city, person.address_zip
 from animal
@@ -137,3 +159,13 @@ where animal.VAT not in(
 	where species_name not like "%bird%")
 inner join client on animal.VAT = client.VAT
 inner join person on client.VAT = person.VAT
+
+/*9 by Tiago*/
+SELECT person.name as 'Client Name', concat(address_street,', ',address_zip,' - ',address_city) as 'Client Address'
+from animal inner join person using(VAT)
+where species_name in(
+	select name1
+	from generalization_species
+	where name2 = 'bird'
+)
+group by person.VAT;

@@ -41,6 +41,7 @@ insert into client values(65856663);
 insert into client values(69630596);
 insert into client values(78526209);
 insert into client values(45620852);
+insert into client values(85264856);
 
 /*veterinary*/
 /****************************   VAT    | specializaion    |    bio*/
@@ -150,7 +151,7 @@ insert into generalization_species values('Cocker Spaniel Americano','Dog');
 insert into generalization_species values('Cocker Spaniel Inglês','Dog');
 
 /*animal*/
-/*********************     name |   VAT  |species_name|colour|gender|birth_year*/
+/*********************     name |   VAT  |species_name|colour|gender|birth_year|age*/
 insert into animal values('Bobi',12345678,'Boxer','castanho','masculino','2013',null);
 insert into animal values('Luna',12345678,'Cão de Crista Chinês','branco','feminino','2015',null);
 insert into animal values('Pala',96520520,'Bobtail','preto','feminino','2016',null);
@@ -181,6 +182,8 @@ insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight,s) v
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Bobi',65856663,'2018-09-11 18:16:24',65856663,12032014,'15');
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Malandro',69630596,'2015-06-16 15:16:17',69630596,85264856,'16');
 INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Riscas',45620852,'2016-05-15 16:32:12',45620852,85264856,'15');
+INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Pala',96520520,'2018-08-10 15:15:15',85264856,12032014,'16');
+
 
 /*participation					name | VAT_owner | date_timestamp | VAT_assistant*/
 insert into participation values('Bobi',12345678,'2018-09-18 18:00:01',85202652);
@@ -273,7 +276,9 @@ insert into consult_diagnosis values('00045','PiuPiu',35263686,'2018-08-01 12:45
 insert into consult_diagnosis values('00056','PiuPiu',35263686,'2018-08-01 12:45:02');
 insert into consult_diagnosis values('00054','Luna',12345678,'2018-09-18 15:52:56');
 insert into consult_diagnosis values('00028','Rapina',45620852,'2017-03-20 15:18:15');
-
+insert into consult_diagnosis values('00060','Riscas',45620852,'2016-05-15 16:32:12');
+INSERT into consult_diagnosis VALUEs('00002','Pala',96520520,'2018-08-10 15:15:15');
+insert into consult_diagnosis values('00060','Bobi',65856663,'2018-09-11 18:16:24');
 /*medication				name | lab | dosage*/
 insert into medication values('levicim','emagricon','5 comprimidos de 20 mg');
 insert into medication values('benouron','SLS','20 comprimidos de 500 mg');

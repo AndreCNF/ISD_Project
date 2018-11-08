@@ -33,7 +33,7 @@ create table person(
 /*METER CONSTRAINT*/
 create table phone_number(
 	VAT integer,
-	phone char(15),
+	phone char(15), /*to be extensible to different kinds of phone structures*/
 	primary key(VAT, phone),
 	foreign key(VAT) references person(VAT)
 );
@@ -113,13 +113,13 @@ create table participation(
 );
 
 create table diagnosis_code(
-	code char(5),
+	code char(5), /*It was chosen a char instead of integer so that the zeros before the number were also printed*/
 	name char(100),
 	primary key (code)
 );
 
 create table consult_diagnosis(
-	code char(20),
+	code char(5),
 	name char(50),
 	VAT_owner integer,
 	date_timestamp timestamp,
@@ -136,7 +136,7 @@ create table medication(
 );
 
 create table prescription(
-    code char(20),
+    code char(5),
     name char(50),
     VAT_owner integer,
     date_timestamp timestamp,
@@ -151,7 +151,7 @@ create table prescription(
 
 create table indicator(
     name char(30),
-    reference_value numeric(5, 2) not null,
+    reference_value numeric(5, 2) not null, /*to allow float numbers*/
     units char(20) not null,
     description text not null,
     primary key(name)
@@ -204,7 +204,7 @@ create table produced_indicator(
     VAT_owner integer,
     date_timestamp timestamp,
     num integer,
-    indicator_name char(20),
+    indicator_name char(30),
     value numeric(5, 2) not null,
     primary key(name,VAT_owner,date_timestamp,num, indicator_name),
     foreign key (name,VAT_owner,date_timestamp,num) references test_procedure(name, VAT_owner, date_timestamp, num) on delete cascade on update cascade
