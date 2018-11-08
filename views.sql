@@ -7,7 +7,7 @@ FROM consult;
 /* dim_animal(animal_name,animal_vat,species,age)
    animal_name,animal_vat: FK(animal)             */
 CREATE view dim_animal AS
-SELECT name AS animal_name, VAT AS animal_vat, species_name AS species, age /*ANDRE:CHECK THIS OUTyear(current_date)-birth_year*/
+SELECT name AS animal_name, VAT AS animal_vat, species_name AS species, year(current_date)-birth_year as age
 FROM animal;
 
 /* facts_consults(name,vat,timestamp,num_procedures,num_medications)
