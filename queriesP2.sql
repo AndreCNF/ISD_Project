@@ -73,20 +73,21 @@ from
 	group by consult.name, consult.VAT_owner, consult.date_timestamp) as prescriptions_table
 
 /*7 by Tiago*/
-SELECT species_name,code,ct
+SELECT species_name, code AS diagnosis_code, ct AS diagnosis_count
 from (
-SELECT species_name,code, count(code) ct
+SELECT species_name, code, count(code) ct
 from animal natural join consult_diagnosis
 where species_name in(
 	SELECT name1
 	FROM generalization_species
 	where name2 = 'Dog'
 )
-GROUP by species_name,code
+GROUP by species_name, code
 order by ct desc) as table_aux
 group by species_name
 
 /*7 by André*/
+-- Not working
 select species_name as dog_breed, disease_name
 from
 	(select *, diagnosis_code.name as disease_name, count(code) as disease_count
@@ -100,6 +101,7 @@ from
 where disease_count >=all (select disease_count from dog_diseases group by species_name)
 		
 /*7 ver outra vez por causa das sub-species*/
+-- Not working
 select animal_name, code
 from (select consult.name, diagnosis_code.name, count(diagnosis_code.code)
 	from consult
@@ -117,6 +119,27 @@ from (select consult.name, diagnosis_code.name, count(diagnosis_code.code)
 		as count_diseases(animal_name, code, count_occurencies)
 group by animal_name, code
 having count_occurencies = max(count_occurencies)
+
+/*8 by André*/
+SELECT DISTINCT name, VAT
+FROM ((SELECT person.name, person.VAT
+	FROM client INNER JOIN consult
+	ON client.VAT = consult.VAT_owner
+	INNER JOIN person
+	ON person.VAT = client.VAT)
+	UNION
+	(SELECT person.name, person.VAT
+	FROM client INNER JOIN consult
+	ON client.VAT = consult.VAT_client
+	INNER JOIN person
+	ON person.VAT = client.VAT)) AS clients_table
+NATURAL JOIN ((SELECT person.VAT
+	FROM assistant INNER JOIN person
+	ON person.VAT = assistant.VAT)
+	UNION
+	(SELECT person.VAT
+	FROM veterinary INNER JOIN person
+	ON person.VAT = veterinary.VAT)) AS staff_table;
 
 /*8*/
 select person.name

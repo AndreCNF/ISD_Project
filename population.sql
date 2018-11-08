@@ -281,6 +281,7 @@ insert into consult_diagnosis values('00028','Rapina',45620852,'2017-03-20 15:18
 insert into consult_diagnosis values('00060','Riscas',45620852,'2016-05-15 16:32:12');
 INSERT into consult_diagnosis VALUEs('00002','Pala',96520520,'2018-08-10 15:15:15');
 insert into consult_diagnosis values('00060','Bobi',65856663,'2018-09-11 18:16:24');
+
 /*medication				name | lab | dosage*/
 insert into medication values('levicim','emagricon','5 comprimidos de 20 mg');
 insert into medication values('benouron','SLS','20 comprimidos de 500 mg');
