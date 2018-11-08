@@ -60,6 +60,7 @@ insert into assistant values(63520543);
 insert into species values('Mammal','Animais que dão de amamentar às crias');
 
 insert into species values('Cat','Animal peludo.');
+insert into species values('Pig','O porco doméstico(nome científico: Sus scrofa domesticus), ou simplesmente porco, é um mamífero bunodonte não-ruminante, da família dos suidae.');
 	/*Birds*/
 insert into species values('Bird', 'Coisa que potencialmente voa.');
 insert into species values('Papagaio','Ave falante');
@@ -107,6 +108,7 @@ insert into species values('Cocker Spaniel Inglês','O Cocker Inglês é descrit
 
 /*generalization_species*/
 /********************************* name1   | name2*/
+insert into generalization_species values('Pig','Mammal');
 insert into generalization_species values('Cat','Mammal');
 insert into generalization_species values('Dog','Mammal');
 insert into generalization_species values('Piriquito','Bird');
@@ -163,7 +165,7 @@ insert into animal values('Malandro',69630596,'Papagaio','Amarelo','masculino','
 insert into animal values('Miau',45620852,'Cat','Preto','masculino','2015',null); 
 insert into animal values('Bobi',65856663,'Boston Terrier','Laranja','feminino','2017',null);
 insert into animal values('Riscas',45620852,'Boston Terrier','Castanho','masculino','2016',null);
-
+insert into animal values('Peggy',85264856,'Pig','Rosa','feminino','2015',null);
 
 /*consult******************* name | VAT_owner | date_timestamp | s | o | a | p | VAT_client | VAT_vet | weight*/
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Bobi',12345678,'2018-09-18 18:00:01',12345678,12032014,'27');
@@ -183,7 +185,7 @@ insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) val
 insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Malandro',69630596,'2015-06-16 15:16:17',69630596,85264856,'16');
 INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Riscas',45620852,'2016-05-15 16:32:12',45620852,85264856,'15');
 INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Pala',96520520,'2018-08-10 15:15:15',85264856,12032014,'16');
-
+insert into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) values('Peggy',85264856,'2018-05-20 20:15:16',85264856,12032014,'13');
 
 /*participation					name | VAT_owner | date_timestamp | VAT_assistant*/
 insert into participation values('Bobi',12345678,'2018-09-18 18:00:01',85202652);
@@ -322,10 +324,12 @@ insert into indicator values('Urine-Protein',10,'milligrams','Medido em mg/dL');
 insert into indicator values('Urine-Urea',16,'grams','Medido em g/24h'); 
 insert into indicator values('Urine-Uric Acid',400,'milligrams','Medido em mg/24h'); 
 insert into indicator values('Urine-pH',6,'pH','Sem unidade');
+insert into indicator values('creatinine level',0.5,'milligrams','Medido em mg/24h');
 
 
 /*_procedure				name | VAT_owner | date_timestamp | num | description*/
 insert into _procedure values('PiuPiu',35263686,'2018-08-01 12:45:02',1042,'Kidney transplant');
+insert into _procedure values('PiuPiu',35263686,'2018-08-01 12:45:02',8256,'Blood test');
 insert into _procedure values('Luna',12345678,'2018-09-18 15:52:56',6136,'Blood test');
 insert into _procedure values('Rapina',45620852,'2017-03-20 15:18:15',2903,'Elbow X-ray');
 insert into _procedure values('Rapina',45620852,'2017-03-20 15:18:15',1892,'Elbow joint operation');
@@ -333,7 +337,7 @@ insert into _procedure values('Rapina',45620852,'2017-03-20 15:18:15',1892,'Elbo
 
 /*test_procedure			name | VAT_owner | date_timestamp | num | type*/
 insert into test_procedure values('Luna',12345678,'2018-09-18 15:52:56',6136,'blood');
--- insert into test_procedure values();
+insert into test_procedure values('PiuPiu',35263686,'2018-08-01 12:45:02',8256,'blood');
 -- insert into test_procedure values();
 -- insert into test_procedure values();
 -- insert into test_procedure values();
@@ -355,7 +359,7 @@ insert into radiography values('Rapina',45620852,'2017-03-20 15:18:15',2903,'/Us
 insert into produced_indicator values('Luna',12345678,'2018-09-18 15:52:56',6136,'Blood-Sodium',322);
 insert into produced_indicator values('Luna',12345678,'2018-09-18 15:52:56',6136,'Blood-Total Serum Iron',150);
 insert into produced_indicator values('Luna',12345678,'2018-09-18 15:52:56',6136,'Blood-Ionized Calcium',4.4);
--- insert into produced_indicator values();
+insert into produced_indicator values('PiuPiu',35263686,'2018-08-01 12:45:02',8256,'creatinine level',1.1);
 -- insert into produced_indicator values();
 -- insert into produced_indicator values();
 -- insert into produced_indicator values();

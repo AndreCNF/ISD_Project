@@ -35,7 +35,7 @@ create table phone_number(
 	VAT integer,
 	phone char(15), /*to be extensible to different kinds of phone structures*/
 	primary key(VAT, phone),
-	foreign key(VAT) references person(VAT)
+	foreign key(VAT) references person(VAT) on DELETE cascade on UPDATE CASCADE
 );
 
 create table client(
