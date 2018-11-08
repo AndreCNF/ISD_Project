@@ -69,7 +69,7 @@ FROM
 	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS prescriptions_table
 	
 /*7*/
-SELECT species_name, code AS diagnosis_code, ct AS diagnosis_count
+SELECT species_name AS 'Animal Species', code AS 'Diagnosis Code', ct AS 'Diagnosis Count'
 FROM (
 SELECT species_name, code, count(code) ct
 FROM animal NATURAL JOIN consult_diagnosis
@@ -83,7 +83,7 @@ order by ct  DESC) AS table_aux
 GROUP BY species_name
 
 /*8*/
-SELECT DISTINCT name, VAT
+SELECT DISTINCT name AS 'Person Name', VAT AS 'Person VAT'
 FROM ((SELECT person.name, person.VAT
 	FROM client INNER JOIN consult
 	ON client.VAT = consult.VAT_owner
@@ -103,67 +103,9 @@ NATURAL JOIN ((SELECT person.VAT
 	FROM veterinary INNER JOIN person
 	ON person.VAT = veterinary.VAT)) AS staff_table;
 
-SELECT name, address_city, address_zip
-FROM (SELECT person.name, person.VAT, address_city, address_zip, species_name
-	FROM person INNER JOIN animal
-	ON person.VAT = animal.VAT) AS pet_owner_table
-GROUP BY name, address_city, address_zip
-HAVING COUNT(species_name) = COUNT(CASE WHEN species_name LIKE "%bird%" THEN 1 END);SELECT avg(count_assistants) AS 'Average num of assistants', avg(count_procedures) AS 'Average num of procedures', avg(count_diagnosis_code) AS 'Average num of diagnosis codes', avg(count_prescriptions) AS 'Average num of prescriptions'
-FROM
-	(SELECT count(participation.VAT_assistant) AS count_assistants, consult.name, consult.VAT_owner, consult.date_timestamp
-	FROM consult NATURAL LEFT OUTER JOIN participation
-	WHERE YEAR(date_timestamp) = '2017'
-	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS assistants_table NATURAL LEFT OUTER join
-	(SELECT count(_procedure.num) AS count_procedures, consult.name, consult.VAT_owner, consult.date_timestamp
-	FROM consult NATURAL LEFT OUTER JOIN _procedure
-	WHERE YEAR(consult.date_timestamp) = '2017'
-	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS procedures_table NATURAL LEFT OUTER join
-	(SELECT count(consult_diagnosis.code) AS count_diagnosis_code, consult.name, consult.VAT_owner, consult.date_timestamp
-	FROM consult NATURAL LEFT OUTER JOIN consult_diagnosis
-	WHERE YEAR(consult.date_timestamp) = '2017'
-	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS diagnosis_table NATURAL LEFT OUTER join
-	(SELECT count(prescription.name_med) AS count_prescriptions, consult.name, consult.VAT_owner, consult.date_timestamp
-	FROM consult NATURAL LEFT OUTER JOIN prescription
-	WHERE YEAR(consult.date_timestamp) = '2017'
-	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS prescriptions_table
-	
-/*7*/
-SELECT species_name, code AS diagnosis_code, ct AS diagnosis_count
-FROM (
-SELECT species_name, code, count(code) ct
-FROM animal NATURAL JOIN consult_diagnosis
-WHERE species_name IN(
-	SELECT name1
-	FROM generalization_species
-	WHERE name2 = 'Dog'
-)
-GROUP by species_name, code
-order by ct  DESC) AS table_aux
-GROUP BY species_name
-
-/*8*/
-SELECT DISTINCT name, VAT
-FROM ((SELECT person.name, person.VAT
-	FROM client INNER JOIN consult
-	ON client.VAT = consult.VAT_owner
-	INNER JOIN person
-	ON person.VAT = client.VAT)
-	UNION
-	(SELECT person.name, person.VAT
-	FROM client INNER JOIN consult
-	ON client.VAT = consult.VAT_client
-	INNER JOIN person
-	ON person.VAT = client.VAT)) AS clients_table
-NATURAL JOIN ((SELECT person.VAT
-	FROM assistant INNER JOIN person
-	ON person.VAT = assistant.VAT)
-	UNION
-	(SELECT person.VAT
-	FROM veterinary INNER JOIN person
-	ON person.VAT = veterinary.VAT)) AS staff_table;
-
-SELECT name, address_city, address_zip
-FROM (SELECT person.name, person.VAT, address_city, address_zip, species_name
+/*9*/
+SELECT name AS 'Client Name', concat(address_street,', ',address_zip,' - ',address_city) AS 'Client Address'
+FROM (SELECT person.name, person.VAT, address_city, address_street, address_zip, species_name
 	FROM person INNER JOIN animal
 	ON person.VAT = animal.VAT) AS pet_owner_table
 GROUP BY name, address_city, address_zip

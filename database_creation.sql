@@ -88,7 +88,7 @@ CREATE TABLE animal(
 CREATE TABLE consult(
 	name CHAR(50),
 	VAT_owner INTEGER,
-	date_timestamp TIMESTAMP,
+	date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	s TEXT,
 	o TEXT,
 	a TEXT,
@@ -105,7 +105,7 @@ CREATE TABLE consult(
 CREATE TABLE participation(
 	name CHAR(50),
 	VAT_owner INTEGER,
-	date_timestamp TIMESTAMP,
+	date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	VAT_assistant INTEGER,
 	PRIMARY KEY(name,VAT_owner,date_timestamp,VAT_assistant),
 	FOREIGN KEY(name,VAT_owner,date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade,
@@ -122,10 +122,10 @@ CREATE TABLE consult_diagnosis(
 	code CHAR(5),
 	name CHAR(50),
 	VAT_owner INTEGER,
-	date_timestamp TIMESTAMP,
+	date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(code,name,VAT_owner,date_timestamp),
-	FOREIGN KEY(code) REFERENCES diagnosis_code(code) ON DELETE CASCADE ON UPDATE cascade,
-	FOREIGN KEY(name,VAT_owner,date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade	
+	FOREIGN KEY(code) REFERENCES diagnosis_code(code) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(name,VAT_owner,date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE CASCADE	
 );
 
 CREATE TABLE medication(
@@ -139,7 +139,7 @@ CREATE TABLE prescription(
     code CHAR(5),
     name CHAR(50),
     VAT_owner INTEGER,
-    date_timestamp TIMESTAMP,
+    date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     name_med CHAR(20) NOT NULL,
     lab CHAR(20) NOT NULL,
     dosage CHAR(100) NOT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE indicator(
 CREATE TABLE _procedure(
     name CHAR(50),
 	VAT_owner INTEGER,
-	date_timestamp TIMESTAMP,
+	date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	num INTEGER,
 	description TEXT NOT NULL,
 	PRIMARY KEY(name, VAT_owner, date_timestamp, num),
@@ -170,7 +170,7 @@ CREATE TABLE _procedure(
 CREATE TABLE performed(
     name CHAR(50),
 	VAT_owner INTEGER,
-	date_timestamp TIMESTAMP,
+	date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	num INTEGER,
 	VAT_assistant INTEGER,
 	PRIMARY KEY(name, VAT_owner, date_timestamp, num, VAT_assistant),
@@ -181,7 +181,7 @@ CREATE TABLE performed(
 CREATE TABLE radiography(
     name CHAR(50),
     VAT_owner INTEGER,
-    date_timestamp TIMESTAMP,
+    date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     num INTEGER,
     file CHAR(100) NOT NULL,
     PRIMARY KEY(name,VAT_owner,date_timestamp,num),
@@ -191,7 +191,7 @@ CREATE TABLE radiography(
 CREATE TABLE test_procedure(
     name CHAR(50),
     VAT_owner INTEGER,
-    date_timestamp TIMESTAMP,
+    date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     num INTEGER,
     type CHAR(5) NOT NULL,
     CONSTRAINT type_RI CHECK(type='blood' OR type='urine'),
@@ -202,7 +202,7 @@ CREATE TABLE test_procedure(
 CREATE TABLE produced_indicator(
     name CHAR(50),
     VAT_owner INTEGER,
-    date_timestamp TIMESTAMP,
+    date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     num INTEGER,
     indicator_name CHAR(30),
     value NUMERIC(5, 2) NOT NULL,
