@@ -5,10 +5,10 @@ WHERE person.VAT = client.VAT
 AND name = 'John Smith';
 
 /*teste*/
-select *
-from person, client
+SELECT *
+FROM person, client
 WHERE person.VAT = client.VAT
-and name = 'John Smith';
+AND name = 'John Smith';
 
 /*2.*/
 UPDATE indicator AS i, test_procedure AS tp, produced_indicator AS pri
@@ -23,14 +23,14 @@ AND tp.num = pri.num;
 
 /*Teste*/
 Select reference_value
-from indicator as i, test_procedure as tp, produced_indicator as pri
+FROM indicator as i, test_procedure as tp, produced_indicator as pri
 WHERE type = 'blood'
-and units = 'milligrams'
-and pri.indicator_name = i.name
-and tp.name = pri.name
-and tp.VAT_owner = pri.VAT_owner
-and tp.date_timestamp = pri.date_timestamp
-and tp.num = pri.num;
+AND units = 'milligrams'
+AND pri.indicator_name = i.name
+AND tp.name = pri.name
+AND tp.VAT_owner = pri.VAT_owner
+AND tp.date_timestamp = pri.date_timestamp
+AND tp.num = pri.num;
 
 /*3.*/
 delete FROM person
