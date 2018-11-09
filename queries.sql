@@ -6,7 +6,7 @@ AND C.name = A.name
 AND O.VAT = C.VAT_owner
 AND VAT_vet IN (
 	SELECT VAT
-	FROM veterINary NATURAL JOIN person
+	FROM veterinary NATURAL JOIN person
 	WHERE name = 'John Smith'
 )
 GROUP BY C.name,C.VAT_owner;
@@ -43,10 +43,10 @@ WHERE VAT IN(
 	FROM animal));
 	
 /*5*/
-SELECT diagnosis_code.name AS 'Diagnosis', count(distINct name_med) AS 'Distinct Medication'
+SELECT diagnosis_code.name AS 'Diagnosis', count(DISTINCT name_med) AS 'Distinct Medication'
 FROM diagnosis_code LEFT OUTER JOIN prescription USING(code)
 GROUP BY code
-ORDER BY count(distINct name_med);
+ORDER BY count(DISTINCT name_med);
 
 /*6*/
 SELECT avg(count_assistants) AS 'Average num of assistants', avg(count_procedures) AS 'Average num of procedures', avg(count_diagnosis_code) AS 'Average num of diagnosis codes', avg(count_prescriptions) AS 'Average num of prescriptions'
