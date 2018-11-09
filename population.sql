@@ -5,8 +5,8 @@ INSERT INTO person VALUES(85202652,'Albertina Souza','Rua do escritor, nº 85,8D
 INSERT INTO person VALUES(96520520,'Penelope Franco','Praceta Ui Ui, nº8','Amadora','8274-653');
 INSERT INTO person VALUES(85264856,'John Smith','Rua Alvares Cabral, lote 56','Cascais','9525-903');
 INSERT INTO person VALUES(35263686,'Maria Albertina', 'Praceta Ui Ui, nº8','Amadora','8274-653');
-INSERT INTO person VALUES(98585856,'João Alves','Rua das Conchas, nº8, 1ºE','Lisboa','2500-132');
-INSERT INTO person VALUES(65856663,'Tiago Vasques','Praceta da manteiga, lote 3, 5ºD', 'Castanheira do Ribatejo','8641-068');
+INSERT INTO person VALUES(98585856,'John Smith','Rua das Conchas, nº8, 1ºE','Lisboa','2500-132');
+INSERT INTO person VALUES(65856663,'John Smith','Praceta da manteiga, lote 3, 5ºD', 'Castanheira do Ribatejo','8641-068');
 INSERT INTO person VALUES(69630596,'Sara Pimpalho','Rua 25 de Abril, nº 74', 'Grandola','2504-974');
 INSERT INTO person VALUES(78526209,'Rui Espinola','Avenida Brasil, nº 24, 11º F', 'Tomar','9853-208');
 INSERT INTO person VALUES(45620852,'Renata Amorim','Rua da Serafina, nº 14', 'Picardães','8524-520');
