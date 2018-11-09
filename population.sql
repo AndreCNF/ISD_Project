@@ -169,7 +169,7 @@ INSERT INTO animal VALUES('Malandro',69630596,'Parrot Bird','Yellow','Male','201
 INSERT INTO animal VALUES('Miau',45620852,'Cat','Dark','Male','2015',NULL); 
 INSERT INTO animal VALUES('Bobi',65856663,'Boston Terrier','Orange','Female','2017',NULL);
 INSERT INTO animal VALUES('Riscas',45620852,'Boston Terrier','Brown','Male','2016',NULL);
-INSERT INTO animal VALUES('Peggy',85264856,'Pig','Pink','Female','2015',NULL);
+INSERT INTO animal VALUES('Peggy',45620852,'Pig','Pink','Female','2015',NULL);
 INSERT INTO animal VALUES('Papinhas',54609438,'Estrela Mountain Dog','Brown','Male','2018',NULL);
 INSERT INTO animal VALUES('Iris',54609438,'Peacock','Green','Female','2007',NULL);
 INSERT INTO animal VALUES('Matumbe',54609438,'Canary Bird','Yellow','Male','2009',NULL);
@@ -191,8 +191,8 @@ INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight,s) V
 INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Bobi',65856663,'2018-09-11 18:16:24',65856663,12032014,'15');
 INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Malandro',69630596,'2015-06-16 15:16:17',69630596,85264856,'16');
 INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Riscas',45620852,'2016-05-15 16:32:12',45620852,85264856,'15');
-INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Pala',96520520,'2018-08-10 15:15:15',85264856,12032014,'16');
-INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Peggy',85264856,'2018-05-20 20:15:16',85264856,12032014,'13');
+INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Pala',96520520,'2018-08-10 15:15:15',35263686,12032014,'16');
+INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Peggy',45620852,'2018-05-20 20:15:16',45620852,12032014,'13');
 
 /*participation					name | VAT_owner | date_timestamp | VAT_assistant*/
 INSERT INTO participation VALUES('Bobi',12345678,'2018-09-18 18:00:01',85202652);
