@@ -4,6 +4,12 @@ SET address_street = 'Rua Giroflé, nº4', address_city = 'Leiria'
 WHERE person.VAT = client.VAT
 AND name = 'John Smith';
 
+/*teste*/
+select *
+from person, client
+WHERE person.VAT = client.VAT
+and name = 'John Smith';
+
 /*2.*/
 UPDATE indicator AS i, test_procedure AS tp, produced_indicator AS pri
 SET reference_value = reference_value*1.1
@@ -14,6 +20,17 @@ AND tp.name = pri.name
 AND tp.VAT_owner = pri.VAT_owner
 AND tp.date_timestamp = pri.date_timestamp
 AND tp.num = pri.num;
+
+/*Teste*/
+Select reference_value
+from indicator as i, test_procedure as tp, produced_indicator as pri
+WHERE type = 'blood'
+and units = 'milligrams'
+and pri.indicator_name = i.name
+and tp.name = pri.name
+and tp.VAT_owner = pri.VAT_owner
+and tp.date_timestamp = pri.date_timestamp
+and tp.num = pri.num;
 
 /*3.*/
 delete FROM person
@@ -44,17 +61,14 @@ AND (cd.name, cd.VAT_owner, cd.date_timestamp) IN (
 	AND value > 1.0
 )
 
-/*está a dar erro e pelo que percebi tem a ver com o
-UPDATE timestamp on cascade*/
-
 /*4. Nova tentativa bruno*/
-INSERT INTO diagnosis_code
+/*INSERT INTO diagnosis_code
 VALUES ('01008','end-stage renal disease');
 
 UPDATE consult_diagnosis AS cd, diagnosis_code AS dc
 SET dc.code = '01008', dc.name = 'end-stage renal disease';
 WHERE dc.name = 'kidney failure'
-AND cd.code = dc.code
+AND cd.code = dc.code*/
 
 
 /*Teste - antes e depois*/
