@@ -202,6 +202,7 @@ INSERT INTO participation VALUES('Onitório',96520520,'2018-10-20 17:39:54',8520
 INSERT INTO participation VALUES('Bobi',65856663,'2018-09-11 18:16:24',85202652);
 INSERT INTO participation VALUES('Malandro',69630596,'2015-06-16 15:16:17',85202652);
 INSERT INTO participation VALUES('Malandro',69630596,'2015-06-16 15:16:17',63065186);
+INSERT INTO participation VALUES('Rapina',45620852,'2017-03-20 15:18:15',85202652);
 
 /*diagnosis_code*/
 INSERT INTO diagnosis_code VALUES('00002','Anal Gland Disease');
@@ -350,3 +351,4 @@ INSERT INTO produced_indicator VALUES('PiuPiu',35263686,'2018-08-01 12:45:02',82
 
 
 /*performed					name | VAT_owner | date_timestamp | num | VAT_assistant*/
+INSERT INTO performed VALUES('Rapina',45620852,'2017-03-20 15:18:15',2903,85202652);
