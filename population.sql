@@ -5,8 +5,8 @@ INSERT INTO person VALUES(85202652,'Albertina Souza','Rua do escritor, nº 85,8D
 INSERT INTO person VALUES(96520520,'Penelope Franco','Praceta Ui Ui, nº8','Amadora','8274-653');
 INSERT INTO person VALUES(85264856,'John Smith','Rua Alvares Cabral, lote 56','Cascais','9525-903');
 INSERT INTO person VALUES(35263686,'Maria Albertina', 'Praceta Ui Ui, nº8','Amadora','8274-653');
-INSERT INTO person VALUES(98585856,'João Alves','Rua das Conchas, nº8, 1ºE','Lisboa','2500-132');
-INSERT INTO person VALUES(65856663,'Tiago Vasques','Praceta da manteiga, lote 3, 5ºD', 'Castanheira do Ribatejo','8641-068');
+INSERT INTO person VALUES(98585856,'John Smith','Rua das Conchas, nº8, 1ºE','Lisboa','2500-132');
+INSERT INTO person VALUES(65856663,'John Smith','Praceta da manteiga, lote 3, 5ºD', 'Castanheira do Ribatejo','8641-068');
 INSERT INTO person VALUES(69630596,'Sara Pimpalho','Rua 25 de Abril, nº 74', 'Grandola','2504-974');
 INSERT INTO person VALUES(78526209,'Rui Espinola','Avenida Brasil, nº 24, 11º F', 'Tomar','9853-208');
 INSERT INTO person VALUES(45620852,'Renata Amorim','Rua da Serafina, nº 14', 'Picardães','8524-520');
@@ -41,8 +41,8 @@ INSERT INTO client VALUES(65856663);
 INSERT INTO client VALUES(69630596);
 INSERT INTO client VALUES(78526209);
 INSERT INTO client VALUES(45620852);
-INSERT INTO client VALUES(85264856);
 INSERT INTO client VALUES(54609438);
+INSERT INTO client VALUES(53250530);
 
 /*veterinary				  VAT     | specializaion | bio*/
 INSERT INTO veterinary VALUES(85264856,'Cirurgia','Especialização em Cirurgia na Faculdade de Clínica Veterinária de Lisboa. Natural de Londres mas há 10 anos em Portugal.');
@@ -163,7 +163,7 @@ INSERT INTO animal VALUES('Malandro',69630596,'Parrot Bird','Yellow','Male','201
 INSERT INTO animal VALUES('Miau',45620852,'Cat','Dark','Male','2015',NULL); 
 INSERT INTO animal VALUES('Bobi',65856663,'Boston Terrier','Orange','Female','2017',NULL);
 INSERT INTO animal VALUES('Riscas',45620852,'Boston Terrier','Brown','Male','2016',NULL);
-INSERT INTO animal VALUES('Peggy',85264856,'Pig','Pink','Female','2015',NULL);
+INSERT INTO animal VALUES('Peggy',53250530,'Pig','Pink','Female','2015',NULL);
 INSERT INTO animal VALUES('Papinhas',54609438,'Estrela Mountain Dog','Brown','Male','2018',NULL);
 INSERT INTO animal VALUES('Iris',54609438,'Peacock','Green','Female','2007',NULL);
 INSERT INTO animal VALUES('Matumbe',54609438,'Canary Bird','Yellow','Male','2009',NULL);
@@ -185,8 +185,8 @@ INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight,s) V
 INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Bobi',65856663,'2018-09-11 18:16:24',65856663,12032014,'15');
 INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Malandro',69630596,'2015-06-16 15:16:17',69630596,85264856,'16');
 INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Riscas',45620852,'2016-05-15 16:32:12',45620852,85264856,'15');
-INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Pala',96520520,'2018-08-10 15:15:15',85264856,12032014,'16');
-INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Peggy',85264856,'2018-05-20 20:15:16',85264856,12032014,'13');
+INSERT into consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Pala',96520520,'2018-08-10 15:15:15',35263686,12032014,'16');
+INSERT INTO consult(name,VAT_owner,date_timestamp,VAT_client,VAT_vet,weight) VALUES('Peggy',53250530,'2018-05-20 20:15:16',45620852,12032014,'13');
 
 /*participation					 name | VAT_owner | date_timestamp | VAT_assistant*/
 INSERT INTO participation VALUES('Bobi',12345678,'2018-09-18 18:00:01',85202652);
