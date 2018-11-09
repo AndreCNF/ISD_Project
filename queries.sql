@@ -25,7 +25,7 @@ FROM consult
 INner JOIN animal ON consult.name = animal.name
 INner JOIN client ON animal.VAT = client.VAT
 INner JOIN person ON client.VAT = person.VAT
-WHERE o LIKE '%obesity%' LIKE o LIKE '%obese%'
+WHERE o LIKE '%obesity%' OR o LIKE '%obese%'
 AND weight > 30
 AND (consult.name, VAT_owner, date_timestamp) IN
 (SELECT consult.name, VAT_owner,max(date_timestamp)
