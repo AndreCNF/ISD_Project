@@ -7,7 +7,7 @@ FROM consult;
 /* dim_animal(animal_name,animal_vat,species,age)
    animal_name,animal_vat: FK(animal)             */
 CREATE VIEW dim_animal AS
-SELECT name AS animal_name, VAT AS animal_vat, species_name AS species, year(current_date)-birth_year as age
+SELECT name AS animal_name, VAT AS animal_vat, species_name AS species, YEAR(CURRENT_DATE)-birth_year AS age
 FROM animal;
 
 /* facts_consults(name,vat,timestamp,num_procedures,num_medications)
@@ -31,7 +31,7 @@ UNION
     WHERE dim_date.date_timestamp IS NOT NULL);
 
 CREATE VIEW facts_consults AS
-SELECT animal_name AS name, animal_vat AS VAT, timestamp, count(num) AS num_procedures, count(DISTINCT name_med, lab, dosage) AS num_medications
+SELECT animal_name AS name, animal_vat AS VAT, timestamp, COUNT(num) AS num_procedures, COUNT(DISTINCT name_med, lab, dosage) AS num_medications
 FROM union_table_view
 GROUP BY name, VAT, timestamp;
 /* Need to do an intermediate view that joins the procedures and prescriptions, much like a full

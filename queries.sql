@@ -22,9 +22,9 @@ ORDER BY reference_value DESC;
 /*3*/
 SELECT consult.name AS 'Animal Name', person.name AS 'Owner Name', animal.species_name AS 'Animal Species', year(current_date)-birth_year AS 'Animal Age'
 FROM consult
-INner JOIN animal ON consult.name = animal.name
-INner JOIN client ON animal.VAT = client.VAT
-INner JOIN person ON client.VAT = person.VAT
+INNER JOIN animal ON consult.name = animal.name
+INNER JOIN client ON animal.VAT = client.VAT
+INNER JOIN person ON client.VAT = person.VAT
 WHERE o LIKE '%obesity%' OR o LIKE '%obese%'
 AND weight > 30
 AND (consult.name, VAT_owner, date_timestamp) IN
@@ -43,27 +43,27 @@ WHERE VAT IN(
 	FROM animal));
 	
 /*5*/
-SELECT diagnosis_code.name AS 'Diagnosis', count(DISTINCT name_med) AS 'Distinct Medication'
+SELECT diagnosis_code.name AS 'Diagnosis', COUNT(DISTINCT name_med) AS 'Distinct Medication'
 FROM diagnosis_code LEFT OUTER JOIN prescription USING(code)
 GROUP BY code
-ORDER BY count(DISTINCT name_med);
+ORDER BY COUNT(DISTINCT name_med);
 
 /*6*/
-SELECT avg(count_assistants) AS 'Average num of assistants', avg(count_procedures) AS 'Average num of procedures', avg(count_diagnosis_code) AS 'Average num of diagnosis codes', avg(count_prescriptions) AS 'Average num of prescriptions'
+SELECT AVG(count_assistants) AS 'Average num of assistants', AVG(count_procedures) AS 'Average num of procedures', AVG(count_diagnosis_code) AS 'Average num of diagnosis codes', AVG(count_prescriptions) AS 'Average num of prescriptions'
 FROM
-	(SELECT count(participation.VAT_assistant) AS count_assistants, consult.name, consult.VAT_owner, consult.date_timestamp
+	(SELECT COUNT(participation.VAT_assistant) AS count_assistants, consult.name, consult.VAT_owner, consult.date_timestamp
 	FROM consult NATURAL LEFT OUTER JOIN participation
 	WHERE YEAR(date_timestamp) = '2017'
-	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS assistants_table NATURAL LEFT OUTER join
-	(SELECT count(_procedure.num) AS count_procedures, consult.name, consult.VAT_owner, consult.date_timestamp
+	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS assistants_table NATURAL LEFT OUTER JOIN
+	(SELECT COUNT(_procedure.num) AS count_procedures, consult.name, consult.VAT_owner, consult.date_timestamp
 	FROM consult NATURAL LEFT OUTER JOIN _procedure
 	WHERE YEAR(consult.date_timestamp) = '2017'
-	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS procedures_table NATURAL LEFT OUTER join
-	(SELECT count(consult_diagnosis.code) AS count_diagnosis_code, consult.name, consult.VAT_owner, consult.date_timestamp
+	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS procedures_table NATURAL LEFT OUTER JOIN
+	(SELECT COUNT(consult_diagnosis.code) AS count_diagnosis_code, consult.name, consult.VAT_owner, consult.date_timestamp
 	FROM consult NATURAL LEFT OUTER JOIN consult_diagnosis
 	WHERE YEAR(consult.date_timestamp) = '2017'
-	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS diagnosis_table NATURAL LEFT OUTER join
-	(SELECT count(prescription.name_med) AS count_prescriptions, consult.name, consult.VAT_owner, consult.date_timestamp
+	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS diagnosis_table NATURAL LEFT OUTER JOIN
+	(SELECT COUNT(prescription.name_med) AS count_prescriptions, consult.name, consult.VAT_owner, consult.date_timestamp
 	FROM consult NATURAL LEFT OUTER JOIN prescription
 	WHERE YEAR(consult.date_timestamp) = '2017'
 	GROUP BY consult.name, consult.VAT_owner, consult.date_timestamp) AS prescriptions_table
@@ -71,15 +71,15 @@ FROM
 /*7*/
 SELECT species_name AS 'Animal Species', code AS 'Diagnosis Code', ct AS 'Diagnosis Count'
 FROM (
-SELECT species_name, code, count(code) ct
+SELECT species_name, code, COUNT(code) ct
 FROM animal NATURAL JOIN consult_diagnosis
 WHERE species_name IN(
 	SELECT name1
 	FROM generalization_species
 	WHERE name2 = 'Dog'
 )
-GROUP by species_name, code
-order by ct  DESC) AS table_aux
+GROUP BY species_name, code
+ORDER BY ct  DESC) AS table_aux
 GROUP BY species_name
 
 /*8*/

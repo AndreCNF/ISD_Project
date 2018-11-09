@@ -33,7 +33,7 @@ AND tp.date_timestamp = pri.date_timestamp
 AND tp.num = pri.num;
 
 /*3.*/
-delete FROM person
+DELETE FROM person
 WHERE name = 'John Smith'
 AND person.VAT IN (
 	SELECT client.VAT
