@@ -41,7 +41,7 @@ CREATE TABLE phone_number(
 CREATE TABLE client(
 	VAT INTEGER,
 	PRIMARY KEY(VAT),
-	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE veterinary(
@@ -49,13 +49,13 @@ CREATE TABLE veterinary(
 	specialization CHAR(50) NOT NULL,
 	bio TEXT NOT NULL,
 	PRIMARY KEY(VAT),
-	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE assistant(
 	VAT INTEGER,
 	PRIMARY KEY(VAT),
-	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(VAT) REFERENCES person(VAT) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE species(
@@ -68,8 +68,8 @@ CREATE TABLE generalization_species(
 	name1 CHAR(50),
 	name2 CHAR(50) NOT NULL,
 	PRIMARY KEY(name1),
-	FOREIGN KEY(name1) REFERENCES species(name) ON DELETE CASCADE ON UPDATE cascade,
-	FOREIGN KEY(name2) REFERENCES species(name) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(name1) REFERENCES species(name) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(name2) REFERENCES species(name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE animal(
@@ -81,8 +81,8 @@ CREATE TABLE animal(
 	birth_year year,
 	age INTEGER,
 	PRIMARY KEY(name,VAT),
-	FOREIGN KEY(VAT) REFERENCES client(VAT) ON DELETE CASCADE ON UPDATE cascade,
-	FOREIGN KEY(species_name) REFERENCES species(name) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(VAT) REFERENCES client(VAT) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(species_name) REFERENCES species(name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE consult(
@@ -97,9 +97,9 @@ CREATE TABLE consult(
 	VAT_vet INTEGER NOT NULL,
 	weight NUMERIC(5,2) NOT NULL,
 	PRIMARY KEY(name,VAT_owner,date_timestamp),
-	FOREIGN KEY(name,VAT_owner) REFERENCES animal(name,VAT) ON DELETE CASCADE ON UPDATE cascade,
-	FOREIGN KEY(VAT_client) REFERENCES client(VAT) ON DELETE CASCADE ON UPDATE cascade,
-	FOREIGN KEY(VAT_vet) REFERENCES veterinary(VAT) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(name,VAT_owner) REFERENCES animal(name,VAT) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(VAT_client) REFERENCES client(VAT) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(VAT_vet) REFERENCES veterinary(VAT) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE participation(
@@ -108,8 +108,8 @@ CREATE TABLE participation(
 	date_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	VAT_assistant INTEGER,
 	PRIMARY KEY(name,VAT_owner,date_timestamp,VAT_assistant),
-	FOREIGN KEY(name,VAT_owner,date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade,
-	FOREIGN KEY(VAT_assistant) REFERENCES assistant(VAT) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(name,VAT_owner,date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(VAT_assistant) REFERENCES assistant(VAT) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE diagnosis_code(
@@ -145,8 +145,8 @@ CREATE TABLE prescription(
     dosage CHAR(100) NOT NULL,
     regime CHAR(100) NOT NULL,
     PRIMARY KEY(code, name, VAT_owner, date_timestamp, name_med, lab, dosage),
-    FOREIGN KEY(code, name, VAT_owner, date_timestamp) REFERENCES consult_diagnosis(code,name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade,
-    FOREIGN KEY(name_med,lab,dosage) REFERENCES medication(name, lab, dosage) ON DELETE CASCADE ON UPDATE cascade
+    FOREIGN KEY(code, name, VAT_owner, date_timestamp) REFERENCES consult_diagnosis(code,name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY(name_med,lab,dosage) REFERENCES medication(name, lab, dosage) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE indicator(
@@ -164,7 +164,7 @@ CREATE TABLE _procedure(
 	num INTEGER,
 	description TEXT NOT NULL,
 	PRIMARY KEY(name, VAT_owner, date_timestamp, num),
-	FOREIGN KEY(name, VAT_owner, date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(name, VAT_owner, date_timestamp) REFERENCES consult(name,VAT_owner,date_timestamp) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE performed(
@@ -174,8 +174,8 @@ CREATE TABLE performed(
 	num INTEGER,
 	VAT_assistant INTEGER,
 	PRIMARY KEY(name, VAT_owner, date_timestamp, num, VAT_assistant),
-	FOREIGN KEY(name, VAT_owner, date_timestamp, num) REFERENCES _procedure(name,VAT_owner,date_timestamp,num) ON DELETE CASCADE ON UPDATE cascade,
-	FOREIGN KEY(VAT_assistant) REFERENCES assistant(VAT) ON DELETE CASCADE ON UPDATE cascade
+	FOREIGN KEY(name, VAT_owner, date_timestamp, num) REFERENCES _procedure(name,VAT_owner,date_timestamp,num) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(VAT_assistant) REFERENCES assistant(VAT) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE radiography(
@@ -185,7 +185,7 @@ CREATE TABLE radiography(
     num INTEGER,
     file CHAR(100) NOT NULL,
     PRIMARY KEY(name,VAT_owner,date_timestamp,num),
-    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES _procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE cascade
+    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES _procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE test_procedure(
@@ -196,7 +196,7 @@ CREATE TABLE test_procedure(
     type CHAR(5) NOT NULL,
     CONSTRAINT type_RI CHECK(type='blood' OR type='urine'),
     PRIMARY KEY(name,VAT_owner,date_timestamp,num),
-    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES _procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE cascade
+    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES _procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE produced_indicator(
@@ -207,5 +207,5 @@ CREATE TABLE produced_indicator(
     indicator_name CHAR(30),
     value NUMERIC(5, 2) NOT NULL,
     PRIMARY KEY(name,VAT_owner,date_timestamp,num, indicator_name),
-    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES test_procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE cascade
+    FOREIGN KEY (name,VAT_owner,date_timestamp,num) REFERENCES test_procedure(name, VAT_owner, date_timestamp, num) ON DELETE CASCADE ON UPDATE CASCADE
 );
