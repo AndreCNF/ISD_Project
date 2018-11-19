@@ -1,7 +1,7 @@
 <html>
 	<body>
 		<h1 style="color:MediumSeaGreen;">Vetpital</h1>
-		<form action="WelcPage.php" method="post">
+		<form action="ResultSearch.php" method="post">
 			<h3>Please introduce the following informations</h3>
 			<p>Animal name: </p>
 			<input type="text" name="animal_name"/>
