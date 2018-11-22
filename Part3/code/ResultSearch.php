@@ -27,7 +27,7 @@
     echo("<h3>Search results: </h3>");
 
     # Call the function the performs the required query
-	$sql = "select SearchConsultName($animal_name,$owner_name,$clientVAT)";
+	$sql = "CALL SearchConsultName('$animal_name','$owner_name',$clientVAT);";
 	$result = $connection->query($sql);
 	if ($result == FALSE)
 	{
@@ -37,12 +37,16 @@
     }
     
 	echo("<table border=\"2\">");
-	echo("<tr><td>Animal_name</td><td>Animal_name</td></tr>");
+	echo("<tr><td>Animal Name</td><td>Owner VAT</td><td>Owner Name</td><td>Consuls with this Client</td></tr>");
 	foreach($result as $row)
 	{
-		echo("<tr><td>");
-		echo($row['name']);
-		echo("</td></tr>");
+		echo("<tr>");
+		echo("<td>{$row['animal']}</td>");
+		echo("<td>{$row['vat']}</td>");
+		echo("<td>{$row['owner']}</td>");
+		if($row['thisClient'] == 1){echo("<td>Yes</td>");}
+		else{echo("<td>No</td>");}
+		echo("</tr>");
 	}
 	echo("</table>");
 	$connection = null;
