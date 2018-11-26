@@ -296,6 +296,11 @@ INSERT INTO indicator VALUES('Urine-Urea',16,'grams','Medido em g/24h');
 INSERT INTO indicator VALUES('Urine-Uric Acid',400,'milligrams','Medido em mg/24h'); 
 INSERT INTO indicator VALUES('Urine-pH',6,'pH','Sem unidade');
 INSERT INTO indicator VALUES('creatinine level',0.5,'milligrams','Medido em mg/24h');
+-- Part 3:
+INSERT INTO indicator VALUES("White blood cell count", 7500, "cells/µL", "Number of white cells per microliter of blood. The normal range is usually between 4,000 and 11,000 per microliter of blood.");
+INSERT INTO indicator VALUES("Number of neutrophils", 4750, "neutrophils/mm3", "The real number of white blood cells (WBCs) that are neutrophils. The absolute neutrophil count is commonly called the ANC. The normal range for the ANC = 1.5 to 8.0 (1,500 to 8,000/mm3).");
+INSERT INTO indicator VALUES("Number of monocytes", 400, "monocytes/µL", "Monocytes are a type of white blood cell that fight certain infections and help other white blood cells remove dead or damaged tissues, destroy cancer cells, and regulate immunity against foreign substances. The normal range is usually between 200 and 600 monocytes per microliter of blood.");
+
 
 /*_procedure				  name | VAT_owner | date_timestamp | num | description */
 INSERT INTO _procedure VALUES('PiuPiu',35263686,'2018-08-01 12:45:02',1042,'Kidney transplant');

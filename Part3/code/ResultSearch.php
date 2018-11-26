@@ -46,6 +46,8 @@
 		echo("<td>{$row['owner']}</td>");
 		if($row['thisClient'] == 1){echo("<td>Yes</td>");}
 		else{echo("<td>No</td>");}
+		// TODO: Add a column with a button to create a blood test associated to the corresponding consult.
+		// echo("<td><button onclick=\"location.href='index.html'\">Insert blood test</button></td>");
 		echo("</tr>");
 	}
 	echo("</table>");
