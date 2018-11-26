@@ -26,7 +26,7 @@
     echo("<p>Client VAT: $clientVAT </p>");
     echo("<h3>Search results: </h3>");
 
-    # Call the function the performs the required query
+    # Call the procedure the performs the required query
 	$sql = "CALL SearchConsultName('$animal_name','$owner_name',$clientVAT);";
 	$result = $connection->query($sql);
 	if ($result == FALSE)
@@ -49,6 +49,18 @@
 		echo("</tr>");
 	}
 	echo("</table>");
+
+	# Search if the Client exists
+	/*$newsql = "SELECT VAT FROM client WHERE VAT=$clientVAT";
+	$nrows = $connection->exec($newsql);
+	echo("<p>Rows deleted: $nrows</p>");
+	if(($nrows == 0) &&($result != 0)){ #This means that the client doesn't exist
+		echo("<h3>Client Not Found</h3>");
+		<form action="NewClient.php" method="get"> #So there's the need to create a new one
+			<p><input type="submit" value="Register new Client"/></p>
+		</form>
+	}*/
+
 	$connection = null;
 ?>
 	</body>
