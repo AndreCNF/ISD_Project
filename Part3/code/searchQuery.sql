@@ -5,7 +5,7 @@ CREATE PROCEDURE SearchConsultName(IN animal_name VARCHAR(50),IN owner_name VARC
 /*RETURNS TABLE(animal VARCHAR(50), vat INTEGER, owner VARCHAR(100), thisClient BOOLEAN)*/
 BEGIN
 /*RETURN TABLE(*/
-	SELECT consult.name as animal,consult.VAT_owner as vat,person.name as owner, VAT_client = clientVat as thisClient
+	SELECT DISTINCT consult.name as animal,consult.VAT_owner as vat,person.name as owner, VAT_client = clientVat as thisClient
     FROM consult
     INNER JOIN client ON consult.VAT_owner = client.VAT
     INNER JOIN person ON client.VAT = person.VAT
