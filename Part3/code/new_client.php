@@ -11,14 +11,10 @@
                     <td><p>Client Name</p></td>
                     <td><input type="text" name="client_name"/></td>
                 </tr>
-<?php
-                $vat=$_SESSION['clientVAT'];
-                echo("<tr>");
-                    echo("<td><p>Client VAT</p></td>");
-                    echo("<td><input type='text' value='{$vat}' name='client_vat'/></td>");
-                    $_SESSION['clientVAT'] = $vat;
-                echo("</tr>");
-?>
+                <tr>
+                    <td><p>Client VAT</p></td>
+                    <td><input type='text' name='client_vat'/></td>
+                </tr>
                 <tr>
                     <td><p>Address Street</p></td>
                     <td><input type="text" name="client_street"/></td>
@@ -86,7 +82,6 @@
                 echo("<p>Error: {$info[2]}</p>");
                 exit();
             } else {
-                echo $client_name;
                 $sth->execute(array($client_vat,$client_name,$client_street,$client_city,$client_zip,$client_vat,$client_vat,$client_phone_nb));
                 $result = $sth->num_rows;
             }

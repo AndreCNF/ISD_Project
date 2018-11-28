@@ -1,3 +1,7 @@
+<?php
+	session_start();
+	$_SESSION['from'] = 'Search.php';
+?>
 <html>
 	<body>
 		<h1 style="color:MediumSeaGreen;">Vetpital</h1>
