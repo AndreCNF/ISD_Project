@@ -43,9 +43,6 @@
     echo("<tr><td>A</td><td>{$result['a']}</td></tr>");
     echo("<tr><td>P</td><td>{$result['p']}</td></tr>");
 
-    
-    
-	echo("<h3>Consults </h3>");
 	
 	
 	$connection = null;
