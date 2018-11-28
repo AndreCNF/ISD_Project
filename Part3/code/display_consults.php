@@ -27,12 +27,14 @@
 	# Data received
 	$animal_name = $_REQUEST['animal'];
 	$owner_name = $_REQUEST['owner'];
+	$ownerVat = $_REQUEST['ownerVat'];
     echo("<p>Animal name: {$animal_name} </p>");
-    echo("<p>Owner name: {$owner_name} </p>");
+	echo("<p>Owner name: {$owner_name} </p>");
+	echo("<p>Owner VAT: {$ownerVat} </p>");
 	echo("<h3>Consults </h3>");
 	
 	# Check for animals that match the search keys
-	$sql = "CALL AnimalConsultsInfo('$animal_name','$owner_name');";
+	$sql = "CALL AnimalConsultsInfo('$animal_name','$ownerVat');";
 	$result = $connection->query($sql);
 	if ($result == FALSE)
 	{

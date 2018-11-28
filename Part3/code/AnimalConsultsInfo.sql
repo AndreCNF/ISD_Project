@@ -1,7 +1,7 @@
 DROP PROCEDURE AnimalConsultsInfo;
 DELIMITER $$
 
-CREATE PROCEDURE AnimalConsultsInfo(IN animal_name VARCHAR(50),IN owner_name VARCHAR(100))
+CREATE PROCEDURE AnimalConsultsInfo(IN animal_name VARCHAR(50),IN owner_vat INTEGER)
 /*RETURNS TABLE(date timestamp, vatVet INTEGER, nameVet VARCHAR(100))*/
 BEGIN
 /*RETURN TABLE(*/
@@ -10,7 +10,7 @@ BEGIN
     INNER JOIN veterinary ON consult.VAT_vet = veterinary.VAT
     INNER JOIN person ON veterinary.VAT = person.VAT
     WHERE consult.name = animal_name
-    AND person.name LIKE CONCAT('%',owner_name,'%');
+    AND consult.VAT_owner = owner_vat;
 /*)*/
 END$$
 DELIMITER ;
