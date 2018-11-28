@@ -70,10 +70,11 @@
 			echo("</tr>");
 		}
 		echo("</table>");
+		echo("<h4>Select the animal that you are looking for</h4>");
 		$result = NULL;
 
 		# Check if the client is registered in the database
-		$sql = "SELECT * FROM client WHERE VAT = :v";
+		/*$sql = "SELECT * FROM client WHERE VAT = :v";
 		$st = $connection->prepare($sql);
 		$st->bindParam(':v',$clientVAT);
 		if ($st == FALSE){
@@ -96,7 +97,7 @@
 			}else{
 				echo("<h4>Select the animal that you are looking for</h4>");
 			}
-		}
+		}*/
 		
 	}
 	

@@ -42,6 +42,7 @@
 		echo("<p>Error: {$info[2]}</p>");
 		exit();
 	}
+	# Print list of consults involving that animal
 	echo("<table border=\"2\">");
 	echo("<tr><td>Date</td><td>Veterinary VAT</td><td>Veterinary Name</td></tr>");
 	foreach($result as $row)
@@ -58,6 +59,12 @@
 		echo("</tr>");
 	}
 	echo("</table>");
+	# New consult button
+	echo("<form action='register_consult.php' method='post'>\n");
+	echo("<input type='hidden' name='animal' value='{$animal_name}'/>\n");
+	echo("<input type='hidden' name='owner' value='{$owner_name}'/>\n");
+	echo("<input type='hidden' name='owner_vat' value='{$ownerVat}'/>\n");
+
 	$result = NULL;
 	$connection = null;
 ?>
