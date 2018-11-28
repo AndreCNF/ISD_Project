@@ -47,7 +47,7 @@
 			</p>
 			<p><input type="submit" value="Get"/></p>
 		</form>
-		<form action="NewClient.php" method="post">
+		<form action="new_client.php" method="post">
 			<p><input type="submit" value="Register new Client"/></p>
 		</form>
 	</body>
