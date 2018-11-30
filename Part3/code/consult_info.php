@@ -21,19 +21,38 @@
 	
 	# Data received
 	$animal_name = $_REQUEST['animal'];
-	$owner_name = $_REQUEST['owner'];
+	$ownerVat = $_REQUEST['owner_vat'];
     $date = $_REQUEST['date'];
     # Check received data
     echo("<p>Animal name: {$animal_name} </p>");
-	echo("<p>Owner name: {$owner_name} </p>");
-    echo("<p>Owner VAT: {$ownerVat} </p>");
+	echo("<p>Owner VAT: {$ownerVat} </p>");
+	echo("<p>Consult date: {$date} </p>");
     
-    # Display animal information
     echo("<h3>Animal Characteristics</h3>");
-    #Perform the query
+	# Get the animal information
+	$sql = "CALL AnimalInfo('$animal_name','$ownerVat');";
+	$result = $connection->query($sql);
+	if ($result == FALSE)
+	{
+		$info = $connection->errorInfo();
+		echo("<p>Error: {$info[2]}</p>");
+		exit();
+	}
+	# Display animal information
     echo("<table border=\"2\">");
-    echo("<tr><td>Animal Name</td><td>VAT owner</td><td>Species name</td><td>Colour</td><td>Gender</td><td>Age</td><td>Weight</td></tr>");
-    echo(""); # print query result info for this criteria
+    echo("<tr><td>Animal Name</td><td>Owner Name</td><td>Species name</td><td>Colour</td><td>Gender</td><td>Age</td><td>Weight</td></tr>");
+	foreach($result as $row)
+	{
+		echo("<tr align='center'>");
+		echo("<td>{$animal_name}</td>");
+		echo("<td>{$row['name_owner']}</td>");
+		echo("<td>{$row['species']}</td>");
+		echo("<td>{$row['colour']}</td>");
+		echo("<td>{$row['gender']}</td>");
+		echo("<td>{$row['age']}</td>");
+		echo("</tr>");
+	}
+	echo("</table>");
 
     # Display soap notes
     echo("<h3>Animal Characteristics</h3>");

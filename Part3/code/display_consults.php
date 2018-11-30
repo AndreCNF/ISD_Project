@@ -48,10 +48,9 @@
 	foreach($result as $row)
 	{
 		echo("<tr align='center'>");
-		#echo("<td><a href=\"consult_info.php?animal={$animal_name}&owner={$owner_name}&date={$row['date']}\"> {$row['date']} </a></td>");
 		echo("<td align='center'><form action='consult_info.php' method='post'>\n");
 		echo("<input type='hidden' name='animal' value='{$animal_name}'/>\n");
-		echo("<input type='hidden' name='owner' value='{$owner_name}'/>\n");
+		echo("<input type='hidden' name='owner_vat' value='{$ownerVat}'/>\n");
 		echo("<input type='hidden' name='date' value='{$row['date']}'/>\n");
 		echo("<input type='submit' value='{$row['date']}'/>\n</form></td>"); 
 		echo("<td>{$row['vatVet']}</td>");
@@ -59,11 +58,14 @@
 		echo("</tr>");
 	}
 	echo("</table>");
+
 	# New consult button
+	echo("<p></p>");
 	echo("<form action='register_consult.php' method='post'>\n");
 	echo("<input type='hidden' name='animal' value='{$animal_name}'/>\n");
 	echo("<input type='hidden' name='owner' value='{$owner_name}'/>\n");
 	echo("<input type='hidden' name='owner_vat' value='{$ownerVat}'/>\n");
+	echo("<input type='submit' value='Register new Consult'/>\n</form></td>");
 
 	$result = NULL;
 	$connection = null;
