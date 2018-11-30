@@ -53,16 +53,25 @@
 		echo("</tr>");
 	}
 	echo("</table>");
+	$result = NULL;
 
-    # Display soap notes
-    echo("<h3>Animal Characteristics</h3>");
-    echo("<table border=\"2\">");
+	# Get the animal information
+	$sql = "CALL SoapInfo('$animal_name','$ownerVat','$date');";
+	$result = $connection->query($sql);
+	if ($result == FALSE)
+	{
+		$info = $connection->errorInfo();
+		echo("<p>Error: {$info[2]}</p>");
+		exit();
+	}
+	# Display soap notes
+    echo("<h3>SOAP Notes</h3>");
+    echo("<table border=\"0\" cellspacing=\"5\">");
     echo("<tr><td>S</td><td>{$result['s']}</td></tr>");
     echo("<tr><td>O</td><td>{$result['o']}</td></tr>");
     echo("<tr><td>A</td><td>{$result['a']}</td></tr>");
-    echo("<tr><td>P</td><td>{$result['p']}</td></tr>");
-
-	
+	echo("<tr><td>P</td><td>{$result['p']}</td></tr>");
+	echo("</table>");
 	
 	$connection = null;
 ?>
