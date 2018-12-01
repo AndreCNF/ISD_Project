@@ -4,8 +4,8 @@
 <?php
 	# Establishing the connection with the database
 	$host = "db.tecnico.ulisboa.pt";
-	$user = "ist181579";
-	$pass = "utfv5127";
+	$user = "ist181715";
+	$pass = "xjja0952";
 	$dsn = "mysql:host=$host;dbname=$user";
 	try
 	{
@@ -19,16 +19,17 @@
 		exit();
 	}
 	
+	# Data received
+	$animal_name = $_REQUEST['animal'];
+	$owner_vat = $_REQUEST['ownerVat'];
 	$assistant_vat = $_REQUEST['assistant_vat'];
 	$white_blood_cell_count = $_REQUEST['white_blood_cell_count'];
 	$number_neutrophils = $_REQUEST['number_neutrophils'];
 	$number_monocytes = $_REQUEST['number_monocytes'];
 
-	// TODO: Access the variables animal_name, VAT_owner and date_timestamp from the select consult
-	// to which the new blood test will be associated.
-
 	# Call the procedure the inserts the blood test procedure in the database
-	$sql = "CALL InsertBloodTest('$animal_name', '$VAT_owner', '$date_timestamp', '$num');";
+	$sql = "CALL InsertBloodTest('$animal_name', '$owner_vat', '$date_timestamp', '$num', '$assistant_vat', 
+								 '$white_blood_cell_count', '$number_neutrophils', '$number_monocytes');";
 	$result = $connection->execute($sql);
 	if ($result == FALSE)
 	{

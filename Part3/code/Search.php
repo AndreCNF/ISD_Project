@@ -16,8 +16,8 @@
 <?php
 		# Establishing the connection with the database
 		$host = "db.tecnico.ulisboa.pt";
-		$user = "ist181579";
-		$pass = "utfv5127";
+		$user = "ist181715";
+		$pass = "xjja0952";
 		$dsn = "mysql:host=$host;dbname=$user";
 		try
 		{

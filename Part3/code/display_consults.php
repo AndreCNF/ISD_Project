@@ -9,8 +9,8 @@
 <?php
 	# Establishing the connection with the database
 	$host = "db.tecnico.ulisboa.pt";
-	$user = "ist181579";
-	$pass = "utfv5127";
+	$user = "ist181715";
+	$pass = "xjja0952";
 	$dsn = "mysql:host=$host;dbname=$user";
 	try
 	{
@@ -44,7 +44,7 @@
 	}
 	# Print list of consults involving that animal
 	echo("<table border=\"2\">");
-	echo("<tr><td>Date</td><td>Veterinary VAT</td><td>Veterinary Name</td></tr>");
+	echo("<tr><td>Date</td><td>Veterinary VAT</td><td>Veterinary Name</td><td>Add blood test</td></tr>");
 	foreach($result as $row)
 	{
 		echo("<tr align='center'>");
@@ -55,6 +55,11 @@
 		echo("<input type='submit' value='{$row['date']}'/>\n</form></td>"); 
 		echo("<td>{$row['vatVet']}</td>");
 		echo("<td>{$row['nameVet']}</td>");
+		echo("<td align='center'><form action='new_blood_test.php' method='post'>\n");
+		echo("<input type='hidden' name='animal' value='{$animal_name}'/>\n");
+		echo("<input type='hidden' name='owner_vat' value='{$ownerVat}'/>\n");
+		echo("<input type='hidden' name='date' value='{$row['date']}'/>\n");
+		echo("<input type='submit' value=New>\n</form></td>"); 
 		echo("</tr>");
 	}
 	echo("</table>");
