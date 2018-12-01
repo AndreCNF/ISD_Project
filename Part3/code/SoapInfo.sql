@@ -8,7 +8,7 @@ BEGIN
 	SELECT s, o, a, p
     FROM consult
     WHERE consult.name = animal_name
-    AND consult.VAT = owner_vat
+    AND consult.VAT_owner = owner_vat
     AND consult.date_timestamp = date_;
 /*)*/
 END$$
