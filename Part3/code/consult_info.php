@@ -65,16 +65,26 @@
 		echo("<p>Error: {$info[2]}</p>");
 		exit();
 	}
-	# Display soap notes
-    echo("<h3>SOAP Notes</h3>");
-    echo("<table border=\"0\" cellspacing=\"5\">");
-    echo("<tr><td>S</td><td>{$result['s']}</td></tr>");
-    echo("<tr><td>O</td><td>{$result['o']}</td></tr>");
-    echo("<tr><td>A</td><td>{$result['a']}</td></tr>");
-	echo("<tr><td>P</td><td>{$result['p']}</td></tr>");
-	echo("</table>");
+	if ($result->rowCount() == 0)
+	{
+		echo("<h3>SOAP Notes</h3>");
+		echo("<p>There are no SOAP notes</p>");
+	}else
+	{
+		# Display soap notes
+		echo("<h3>SOAP Notes</h3>");
+		echo("<table border=\"0\" cellspacing=\"5\">");
+		foreach($result as $row)
+		{
+			echo("<tr><td style='font-weight:bold'>S</td><td>{$row['s']}</td></tr>");
+			echo("<tr><td style='font-weight:bold'>O</td><td>{$row['o']}</td></tr>");
+			echo("<tr><td style='font-weight:bold'>A</td><td>{$row['a']}</td></tr>");
+			echo("<tr><td style='font-weight:bold'>P</td><td>{$row['p']}</td></tr>");
+		}
+		echo("</table>");
+	}
 	$result = NULL;
-
+	
 	# Get the diagnosis information
 	$sql = "CALL DiagnosisInfo('$animal_name','$ownerVat','$date');";
 	$result = $connection->query($sql);
