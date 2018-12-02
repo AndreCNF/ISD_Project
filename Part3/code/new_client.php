@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <html>
 	<body>
 		<h1 style="color:MediumSeaGreen;">Vetpital</h1>
@@ -31,11 +28,14 @@
                     <td><p>Phone Number</p></td>
                     <td><input type="text" name="client_phone_nb"/></td>
                 </tr>
+<?php               echo("<input type='hidden' value='{$_REQUEST['from']}' name='from'/>"); ?>
             </table>
             <p><input type="submit" value="Create"/></p>
 		</form>
 
 <?php   
+        $return2 = $_POST['from'];
+
         $all_filled = 1;
         if (!empty($_POST["client_name"])) {
             $client_name = $_POST["client_name"];
@@ -87,8 +87,9 @@
             }
             $connection = null;
             
+            
             #Sends the person back to the page where it has
-            header("Location: {$_SESSION['from']}");
+            header("Location: $return2");
         }
 ?>
 	
