@@ -1,13 +1,3 @@
-<?php
-	session_start();
-	# $_SESSION['var']="sada";
-	$animal_name = $_REQUEST['animal_name'];
-    $owner_name = $_REQUEST['owner_name'];
-	$clientVAT = $_REQUEST['client_vat'];
-	$_SESSION['animal_name'] = $animal_name;
-	$_SESSION['owner_name'] = $owner_name;
-	$_SESSION['clientVAT'] = $clientVAT;
-?>
 <html>
 	<body>
 		<h1 style="color:MediumSeaGreen;">Vetpital</h1>
@@ -30,13 +20,16 @@
     }
 	
 	# Data received
-    echo("<p>Animal name: {$animal_name} </p>");
+	$animal_name = $_REQUEST['animal_name'];
+    $owner_name = $_REQUEST['owner_name'];
+	$clientVat = $_REQUEST['client_vat'];
+	echo("<p>Animal name: {$animal_name} </p>");
     echo("<p>Owner name: {$owner_name} </p>");
-    echo("<p>Client VAT: {$clientVAT} </p>");
+    echo("<p>Client VAT: {$clientVat} </p>");
 	echo("<h3>Search results: </h3>");
 	
 	# Check for animals that match the search keys
-	$sql = "CALL SearchConsultName('$animal_name','$owner_name',$clientVAT);";
+	$sql = "CALL SearchConsultName('$animal_name','$owner_name','$clientVat');";
 	$result = $connection->query($sql);
 	if ($result == FALSE)
 	{
@@ -61,7 +54,8 @@
 			echo("<td align='center'><form action='display_consults.php' method='post'>\n");
 			echo("<input type='hidden' name='animal' value='{$row['animal']}'/>\n");
 			echo("<input type='hidden' name='owner' value='{$row['owner']}'/>\n");
-			echo("<input type='hidden' name='owner_vat' value='{$row['vat']}'/>\n");
+			echo("<input type='hidden' name='ownerVat' value='{$row['vat']}'/>\n");
+			echo("<input type='hidden' name='clientVat' value='{$clientVat}'/>\n");
 			echo("<input type='submit' value='{$row['animal']}'/>\n</form></td>"); 
 			echo("<td>{$row['vat']}</td>");
 			echo("<td>{$row['owner']}</td>");

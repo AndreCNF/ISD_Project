@@ -1,7 +1,3 @@
-<?php
-	session_start();
-	$_SESSION['from'] = 'Search.php';
-?>
 <html>
 	<body>
 		<h1 style="color:MediumSeaGreen;">Vetpital</h1>
@@ -49,11 +45,10 @@
 ?>
 				</select>
 			</p>
-			<p><input type="submit" value="Get"/></p>
+			<p><input type="submit" value="Search"/></p>
 		</form>
-		<form action="new_client.php" method="post">
-			<p><input type="submit" value="Register new Client"/></p>
-			<input type="hidden" value="Search.php" name="from"/>
+		<form action="NewClient.php" method="post">
+			<p><input type="submit" value="Register new client"/></p>
 		</form>
 	</body>
 </html>
