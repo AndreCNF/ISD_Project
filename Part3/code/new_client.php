@@ -59,8 +59,8 @@
         if($all_filled == 1){
             # Establishing the connection with the database
             $host = "db.tecnico.ulisboa.pt";
-            $user = "ist181715";
-            $pass = "xjja0952";
+            $user = "ist181579";
+	        $pass = "utfv5127";
             $dsn = "mysql:host=$host;dbname=$user";
             try
             {

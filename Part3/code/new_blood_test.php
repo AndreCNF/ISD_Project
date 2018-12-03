@@ -4,8 +4,8 @@
 <?php
 	# Establishing the connection with the database
 	$host = "db.tecnico.ulisboa.pt";
-	$user = "ist181715";
-	$pass = "xjja0952";
+	$user = "ist181579";
+	$pass = "utfv5127";
 	$dsn = "mysql:host=$host;dbname=$user";
 	try
 	{
@@ -56,7 +56,7 @@
 		echo("<option value=\"$assistant_vat\">$assistant_vat</option>");
 	}
 	
-	$result = NULL;
+	// $result = NULL;
 
 	echo("</select>");
 	echo("<p>White blood cell count: </p>");
@@ -83,24 +83,12 @@
 	$date_timestamp = $_REQUEST['date_timestamp'];
 	$assistant_vat = $_REQUEST['assistant_vat'];
 
-    echo("<p>Animal name: {$animal_name} </p>");
-	echo("<p>Owner name: {$owner_name} </p>");
-	echo("<p>Owner VAT: {$owner_vat} </p>");
-	echo("<p>Date: {$date_timestamp} </p>");
-
-    echo("<p>num: {$num} </p>");
-    echo("<p>Assistant VAT: {$assistant_vat} </p>");
-    echo("<p>White blood cell count: {$white_blood_cell_count} </p>");
-	echo("<p>Number of neutrophils: {$number_neutrophils} </p>");
-	echo("<p>Number monocytes: {$number_monocytes} </p>");
-
-	// if($all_filled == 1){
 	if (isset($_REQUEST['btnRegister'])) {
 		# Call the procedure the inserts the blood test procedure in the database
 		$sql = "CALL InsertBloodTest('$animal_name', '$owner_vat', '$date_timestamp', '$num', '$assistant_vat', '$white_blood_cell_count', '$number_neutrophils', '$number_monocytes');";
 
 		if ($connection->query($sql) == TRUE) {
-			echo "New record created successfully";
+			echo "New blood test procedure created successfully";
 		} else {
 			echo "Error: " . $sql . "<br>" . $connection->errorInfo;
 		}		
