@@ -23,7 +23,7 @@
 	$animal_name = $_REQUEST['animal_name'];
 	$owner_name = $_REQUEST['owner_name'];
 	$owner_vat = $_REQUEST['owner_vat'];
-	$date = $_REQUEST['date'];
+	$date_timestamp = $_REQUEST['date'];
 
 	# Random num
 	$num = 42;
@@ -33,7 +33,7 @@
     echo("<p>Animal name: {$animal_name} </p>");
 	echo("<p>Owner name: {$owner_name} </p>");
 	echo("<p>Owner VAT: {$owner_vat} </p>");
-	echo("<p>Date: {$date} </p>");
+	echo("<p>Date: {$date_timestamp} </p>");
 
 	# Form to introduce new blood test data
 	echo("<form action=\"\" method=\"post\">");
@@ -55,6 +55,8 @@
 		$assistant_vat = $row['VAT'];
 		echo("<option value=\"$assistant_vat\">$assistant_vat</option>");
 	}
+	
+	$result = NULL;
 
 	echo("</select>");
 	echo("<p>White blood cell count: </p>");
@@ -66,7 +68,7 @@
 	echo("<input type='hidden' name='animal_name' value='{$animal_name}'/>\n");
 	echo("<input type='hidden' name='owner_name' value='{$owner_name}'/>\n");
 	echo("<input type='hidden' name='owner_vat' value='{$owner_vat}'/>\n");
-	echo("<input type='hidden' name='date' value='{$date}'/>\n");
+	echo("<input type='hidden' name='date_timestamp' value='{$date_timestamp}'/>\n");
 	echo("<p><input type=\"submit\" name=\"btnRegister\" value=\"Register\"/></p>");
 	echo("</form>");
 
@@ -78,12 +80,13 @@
 	$animal_name = $_REQUEST['animal_name'];
 	$owner_name = $_REQUEST['owner_name'];
 	$owner_vat = $_REQUEST['owner_vat'];
-	$date = $_REQUEST['date'];
+	$date_timestamp = $_REQUEST['date_timestamp'];
+	$assistant_vat = $_REQUEST['assistant_vat'];
 
     echo("<p>Animal name: {$animal_name} </p>");
 	echo("<p>Owner name: {$owner_name} </p>");
 	echo("<p>Owner VAT: {$owner_vat} </p>");
-	echo("<p>Date: {$date} </p>");
+	echo("<p>Date: {$date_timestamp} </p>");
 
     echo("<p>num: {$num} </p>");
     echo("<p>Assistant VAT: {$assistant_vat} </p>");
@@ -91,52 +94,16 @@
 	echo("<p>Number of neutrophils: {$number_neutrophils} </p>");
 	echo("<p>Number monocytes: {$number_monocytes} </p>");
 
-	// $all_filled = 1;
-	// if (!empty($_REQUEST["animal_name"])) {
-	// 	$animal_name = $_REQUEST['animal_name'];
-	// } else {echo nl2br("An animal name is required\n");$all_filled = 0;}
-	// if (!empty($_REQUEST["owner_vat"])) {
-	// 	$owner_vat = $_REQUEST['owner_vat'];
-	// } else {echo nl2br("An owner VAT is required\n");$all_filled = 0;}
-	// if (!empty($_REQUEST["date"])) {
-	// 	$date = $_REQUEST['date'];
-	// } else {echo nl2br("A date is required\n");$all_filled = 0;}
-	// if (!empty($_REQUEST["assistant_vat"])) {
-	// 	$assistant_vat = $_REQUEST['assistant_vat'];
-	// } else {echo nl2br("An assistant VAT is required\n");$all_filled = 0;}
-	// if (!empty($_REQUEST["white_blood_cell_count"])) {
-	// 	$white_blood_cell_count = $_REQUEST['white_blood_cell_count'];
-	// } else {echo nl2br("A white blood cell count is required\n");$all_filled = 0;}
-	// if (!empty($_REQUEST["number_neutrophils"])) {
-	// 	$number_neutrophils = $_REQUEST['number_neutrophils'];
-	// } else {echo nl2br("A number of neutrophils is required\n");$all_filled = 0;}
-	// if (!empty($_REQUEST["number_monocytes"])) {
-	// 	$number_monocytes = $_REQUEST['number_monocytes'];
-	// } else {echo nl2br("A number of monocytes is required\n");$all_filled = 0;}
-	// if (empty($num)) {
-	// 	echo nl2br("A num is required\n");
-	// 	$all_filled = 0;
-	// }
-
 	// if($all_filled == 1){
-	if (isset($_POST['btnRegister'])) {
+	if (isset($_REQUEST['btnRegister'])) {
 		# Call the procedure the inserts the blood test procedure in the database
 		$sql = "CALL InsertBloodTest('$animal_name', '$owner_vat', '$date_timestamp', '$num', '$assistant_vat', '$white_blood_cell_count', '$number_neutrophils', '$number_monocytes');";
-		$result = $connection->exec($sql);
-		echo("<p>Rows inserted: $result</p>");
 
-		// $sql = "CALL InsertBloodTest(?, ?, ?, ?, ?, ?, ?, ?);";
-		// $sth = $connection->prepare($sql);
-
-		// if ($sth == FALSE) {
-		// 	$info = $connection->errorInfo();
-		// 	echo("<p>Error: {$info[2]}</p>");
-		// 	exit();
-		// } else {
-		// 	$sth->execute(array($animal_name, $owner_vat, $date_timestamp, $num, $assistant_vat, $white_blood_cell_count, $number_neutrophils, $number_monocytes));
-		// 	$result = $sth->num_rows;
-		// 	echo("<p>Rows inserted: $result</p>");
-		// }
+		if ($connection->query($sql) == TRUE) {
+			echo "New record created successfully";
+		} else {
+			echo "Error: " . $sql . "<br>" . $connection->errorInfo;
+		}		
 	}
 
 	$connection = null;
