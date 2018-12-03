@@ -8,8 +8,5 @@
 		<form action="HomePage.php" method="get">
 			<p><input type="submit" value="Register a consult"/></p>
 		</form>
-		<form action="HomePage.php" method="get">
-			<p><input type="submit" value="Register a blood test"/></p>
-		</form>
 	</body>
 </html>
