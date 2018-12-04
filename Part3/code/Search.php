@@ -49,6 +49,7 @@
 		</form>
 		<form action="new_client.php" method="post">
 			<p><input type="submit" value="Register new client"/></p>
+			<input type="hidden" value="Search.php" name="from"/>
 		</form>
 	</body>
 </html>
