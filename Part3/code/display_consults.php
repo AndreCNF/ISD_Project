@@ -55,7 +55,7 @@
 		echo("<td align='center'><form action='new_blood_test.php' method='post'>\n");
 		echo("<input type='hidden' name='animal_name' value='{$animal_name}'/>\n");
 		echo("<input type='hidden' name='owner_name' value='{$owner_name}'/>\n");
-		echo("<input type='hidden' name='owner_vat' value='{$owner_vat}'/>\n");
+		echo("<input type='hidden' name='owner_vat' value='{$ownerVat}'/>\n");
 		echo("<input type='hidden' name='date' value='{$row['date']}'/>\n");
 		echo("<input type='submit' value=New>\n</form></td>"); 
 		echo("</tr>");
