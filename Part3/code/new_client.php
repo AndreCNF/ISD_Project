@@ -89,7 +89,7 @@
             
             
             #Sends the person back to the page where it has
-            header("Location: $return2");
+            header("Location: Search.php");
         }
 ?>
 	
