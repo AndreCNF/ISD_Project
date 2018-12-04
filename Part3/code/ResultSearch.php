@@ -56,9 +56,44 @@
 			echo("<input type='submit' value='{$row['animal']}'/>\n</form></td>"); 
 			echo("<td>{$row['vat']}</td>");
 			echo("<td>{$row['owner']}</td>");
-			if($row['thisClient'] == 1){echo("<td>Yes</td>");}
+
+			# Establishing the connection with the database
+			$host = "db.tecnico.ulisboa.pt";
+			$user = "ist181579";
+			$pass = "utfv5127";
+			$dsn = "mysql:host=$host;dbname=$user";
+			try
+			{
+				$connection_2 = new PDO($dsn, $user, $pass);
+			}
+			catch(PDOException $exception)
+			{
+				echo("<p>Error: ");
+				echo($exception->getMessage());
+				echo("</p>");
+				exit();
+			}
+
+			$sql_2 = "CALL consult_with_client('$animal_name','{$row['vat']}','$clientVat');";
+			$this_result = $connection_2->query($sql_2);
+			if ($this_result == FALSE)
+			{
+				$info = $connection->errorInfo();
+				echo("<p>Error: {$info[2]}</p>");
+				exit();
+			}
+			if ($this_result->rowCount() == 0)
+			{
+				$consults_with_client = 0;
+			} else {
+				$consults_with_client = 1;
+			}
+			
+			$this_result = NULL;
+			if($consults_with_client == 1){echo("<td>Yes</td>");}
 			else{echo("<td>No</td>");}
 			echo("</tr>");
+			$connection_2=NULL;
 		}
 		echo("</table>");
 		echo("<h4>Select the animal that you are looking for</h4>");
