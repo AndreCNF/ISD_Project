@@ -8,5 +8,9 @@
 		<form action="HomePage.php" method="get">
 			<p><input type="submit" value="Register a consult"/></p>
 		</form>
+		<form action="https://www.instagram.com/p/Bq1XlcjAvr3/?utm_source=ig_share_sheet&igshid=143zsnmqhmbij" method="get">
+			<p>See a video that show the love that our clients have to us:</p>
+			<p><input type="submit" value="Link to the video"/></p>
+		</form>
 	</body>
 </html>
