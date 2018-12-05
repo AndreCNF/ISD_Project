@@ -1,6 +1,6 @@
 <html>
 	<body>
-		<h1 style="color:MediumSeaGreen;">Vetpital</h1>
+		<h1><a href = "http://web.tecnico.ulisboa.pt/ist181579/sibd/proj/HomePage.php" style="color:MediumSeaGreen;text-decoration: none;">Vetpital</a></h1>
 <?php
 	# Establishing the connection with the database
 	$host = "db.tecnico.ulisboa.pt";
