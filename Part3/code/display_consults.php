@@ -24,7 +24,7 @@
 	$owner_name = $_REQUEST['owner'];
 	$ownerVat = $_REQUEST['ownerVat'];
 	$clientVat = $_REQUEST['clientVat'];
-    echo("<p>Animal name: {$animal_name} </p>");
+    	echo("<p>Animal name: {$animal_name} </p>");
 	echo("<p>Owner name: {$owner_name} </p>");
 	echo("<p>Owner VAT: {$ownerVat} </p>");
 	echo("<p>Client VAT: {$clientVat} </p>");
