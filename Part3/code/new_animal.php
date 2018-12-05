@@ -1,6 +1,6 @@
 <html>
 	<body>
-		<h1 style="color:MediumSeaGreen;">Vetpital</h1>
+		<h1><a href = "http://web.tecnico.ulisboa.pt/ist181579/sibd/proj/HomePage.php" style="color:MediumSeaGreen;text-decoration: none;">Vetpital</a></h1>
 		<form action="" method="post">
             <h3>New Animal</h3>
             <table style="width:35%">
