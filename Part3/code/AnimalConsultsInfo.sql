@@ -10,7 +10,8 @@ BEGIN
     INNER JOIN veterinary ON consult.VAT_vet = veterinary.VAT
     INNER JOIN person ON veterinary.VAT = person.VAT
     WHERE consult.name = animal_name
-    AND consult.VAT_owner = owner_vat;
+    AND consult.VAT_owner = owner_vat
+    ORDER BY consult.date_timestamp DESC;
 /*)*/
 END$$
 DELIMITER ;
