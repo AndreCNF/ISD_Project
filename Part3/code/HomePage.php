@@ -5,9 +5,6 @@
 		<form action="Search.php" method="get">
 			<p><input type="submit" value="Search"/></p>
 		</form>
-		<form action="HomePage.php" method="get">
-			<p><input type="submit" value="Register a consult"/></p>
-		</form>
 		<br>
 		<br>
 		<br>
