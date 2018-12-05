@@ -39,7 +39,7 @@
     }
 	if ($result->rowCount() == 0)
 	{
-		echo("<h4>There was no animal found <form action='new_animal.php' method='post'>\n<p><input type='submit' value='Register New Animal'/></p>\n</form></h4>");
+		echo("<h4>There was no animal found <form action='new_animal.php' method='post'>\n<p><input type='submit' value='Register New Animal'/><input type='hidden' value='{$animal_name}' name='animal_name'/><input type='hidden' value='{$owner_name}' name='owner_name'/></p>\n</form></h4>");
 
 	}else{
 		# Print the results from the search 
