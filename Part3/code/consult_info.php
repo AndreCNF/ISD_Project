@@ -22,13 +22,13 @@
 	# Data received
 	$animal_name = $_REQUEST['animal'];
 	$ownerVat = $_REQUEST['owner_vat'];
-    $date = $_REQUEST['date'];
-    # Check received data
-    echo("<p>Animal name: {$animal_name} </p>");
+	$date = $_REQUEST['date'];
+    	# Check received data
+    	echo("<p>Animal name: {$animal_name} </p>");
 	echo("<p>Owner VAT: {$ownerVat} </p>");
 	echo("<p>Consult date: {$date} </p>");
     
-    echo("<h3>Animal Characteristics</h3>");
+    	echo("<h3>Animal Characteristics</h3>");
 	# Get the animal information
 	$sql = "CALL AnimalInfo('$animal_name','$ownerVat','$date');";
 	$result = $connection->query($sql);
@@ -39,8 +39,8 @@
 		exit();
 	}
 	# Display animal information
-    echo("<table border=\"2\">");
-    echo("<tr><td>Animal Name</td><td>Owner Name</td><td>Species name</td><td>Colour</td><td>Gender</td><td>Age</td><td>Weight</td></tr>");
+    	echo("<table border=\"2\">");
+    	echo("<tr><td>Animal Name</td><td>Owner Name</td><td>Species name</td><td>Colour</td><td>Gender</td><td>Age</td><td>Weight</td></tr>");
 	foreach($result as $row)
 	{
 		echo("<tr align='center'>");
@@ -96,8 +96,8 @@
 	}
 	# Display diagnosis information
 	echo("<h3>Diagnosis</h3>");
-    echo("<table border=\"2\">");
-    echo("<tr><td>Diagnosis Code</td><td>Diagnosis Name</td></tr>");
+    	echo("<table border=\"2\">");
+    	echo("<tr><td>Diagnosis Code</td><td>Diagnosis Name</td></tr>");
 	foreach($result as $row)
 	{
 		echo("<tr align='center'>");
@@ -119,8 +119,8 @@
 	}
 	# Display prescriptions information
 	echo("<h3>Presciptions</h3>");
-    echo("<table border=\"2\">");
-    echo("<tr><td>Diagnosis Code</td><td>Medication Name</td><td>Medication Lab</td><td>Medication Dosage</td><td>Regime</td></td></tr>");
+    	echo("<table border=\"2\">");
+    	echo("<tr><td>Diagnosis Code</td><td>Medication Name</td><td>Medication Lab</td><td>Medication Dosage</td><td>Regime</td></td></tr>");
 	foreach($result as $row)
 	{
 		echo("<tr align='center'>");
