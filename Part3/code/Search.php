@@ -27,7 +27,7 @@
 			exit();
 		}
 		
-		# Get the existent client's VAT
+		# Get the existent clients VAT
 		$sql = "SELECT VAT FROM client ORDER BY VAT";
 		$result = $connection->query($sql);
 		if ($result == FALSE)
