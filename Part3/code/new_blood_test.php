@@ -4,8 +4,8 @@
 <?php
 	# Establishing the connection with the database
 	$host = "db.tecnico.ulisboa.pt";
-	$user = "ist181579";
-	$pass = "utfv5127";
+	$user = "ist181715";
+	$pass = "xjja0952";
 	$dsn = "mysql:host=$host;dbname=$user";
 	try
 	{
@@ -26,7 +26,25 @@
 	$date_timestamp = $_REQUEST['date'];
 
 	# Random num
-	$num = 42;
+	// $num = 42;
+
+	# Find out what's the maximum num value of all procedures
+	$sql ="CALL GetMaxProcedureNum();";
+	$result = $connection->query($sql);
+	if ($result == FALSE)
+	{
+		$info = $connection->errorInfo();
+		echo("<p>Error: {$info[2]}</p>");
+		exit();
+	}
+	foreach($result as $row)
+	{
+		echo("<p>max(num) = {$row['max(num)']}</p>");
+
+		# Make the new procedure's num value bigger than all of the existing ones
+		$num = $row['max(num)'] + 1;
+		echo("<p>num = {$num}</p>");
+	}
 
 	# Indicating which animal was examined in the new blood test procedure
 	echo("<h3>New blood test</h3>");
@@ -55,8 +73,6 @@
 		$assistant_vat = $row['VAT'];
 		echo("<option value=\"$assistant_vat\">$assistant_vat</option>");
 	}
-	
-	// $result = NULL;
 
 	echo("</select>");
 	echo("<p>White blood cell count: </p>");
@@ -84,13 +100,18 @@
 	$assistant_vat = $_REQUEST['assistant_vat'];
 
 	if (isset($_REQUEST['btnRegister'])) {
+		$connection->beginTransaction();
+
 		# Call the procedure the inserts the blood test procedure in the database
 		$sql = "CALL InsertBloodTest('$animal_name', '$owner_vat', '$date_timestamp', '$num', '$assistant_vat', '$white_blood_cell_count', '$number_neutrophils', '$number_monocytes');";
+		$result = $connection->query($sql);
 
-		if ($connection->query($sql) == TRUE) {
+		if ($result) {
 			echo "New blood test procedure created successfully";
+			$connection->commit();
 		} else {
 			echo "Error: " . $sql . "<br>" . $connection->errorInfo;
+			$connection->rollBack();
 		}		
 	}
 
