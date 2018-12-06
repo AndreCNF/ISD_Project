@@ -4,8 +4,8 @@
 <?php
 	# Establishing the connection with the database
 	$host = "db.tecnico.ulisboa.pt";
-	$user = "ist181715";
-	$pass = "xjja0952";
+	$user = "ist181579";
+    $pass = "utfv5127";
 	$dsn = "mysql:host=$host;dbname=$user";
 	try
 	{
@@ -25,9 +25,6 @@
 	$owner_vat = $_REQUEST['owner_vat'];
 	$date_timestamp = $_REQUEST['date'];
 
-	# Random num
-	// $num = 42;
-
 	# Find out what's the maximum num value of all procedures
 	$sql ="CALL GetMaxProcedureNum();";
 	$result = $connection->query($sql);
@@ -45,6 +42,9 @@
 		$num = $row['max(num)'] + 1;
 		echo("<p>num = {$num}</p>");
 	}
+
+	# Free the result variable for the next queries
+	$result = NULL;
 
 	# Indicating which animal was examined in the new blood test procedure
 	echo("<h3>New blood test</h3>");
