@@ -6,11 +6,11 @@ CREATE PROCEDURE SearchConsultName(IN animal_name VARCHAR(50),IN owner_name VARC
 BEGIN
 /*RETURN TABLE(*/
 	SELECT consult.name as animal,consult.VAT_owner as vat,person.name as owner, VAT_client = clientVat as thisClient
-    FROM consult
-    INNER JOIN client ON consult.VAT_owner = client.VAT
-    INNER JOIN person ON client.VAT = person.VAT
-    WHERE consult.name = animal_name
-    AND person.name LIKE CONCAT('%',owner_name,'%');
+	FROM consult
+	INNER JOIN client ON consult.VAT_owner = client.VAT
+	INNER JOIN person ON client.VAT = person.VAT
+	WHERE consult.name = animal_name
+	AND person.name LIKE CONCAT('%',owner_name,'%');
 /*)*/
 END$$
 DELIMITER ;

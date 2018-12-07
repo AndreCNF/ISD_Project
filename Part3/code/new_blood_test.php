@@ -5,7 +5,7 @@
 	# Establishing the connection with the database
 	$host = "db.tecnico.ulisboa.pt";
 	$user = "ist181579";
-    $pass = "utfv5127";
+	$pass = "utfv5127";
 	$dsn = "mysql:host=$host;dbname=$user";
 	try
 	{
@@ -17,7 +17,7 @@
 		echo($exception->getMessage());
 		echo("</p>");
 		exit();
-    }
+	}
 	
 	# Data received
 	$animal_name = $_REQUEST['animal_name'];
@@ -45,7 +45,7 @@
 
 	# Indicating which animal was examined in the new blood test procedure
 	echo("<h3>New blood test</h3>");
-    echo("<p>Animal name: {$animal_name} </p>");
+	echo("<p>Animal name: {$animal_name} </p>");
 	echo("<p>Owner name: {$owner_name} </p>");
 	echo("<p>Owner VAT: {$owner_vat} </p>");
 	echo("<p>Date: {$date_timestamp} </p>");

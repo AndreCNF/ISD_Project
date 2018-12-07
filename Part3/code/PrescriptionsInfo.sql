@@ -6,10 +6,10 @@ CREATE PROCEDURE PrescriptionsInfo(IN animal_name VARCHAR(50),IN owner_vat INTEG
 BEGIN
 /*RETURN TABLE(*/
 	SELECT code, name_med, lab, dosage, regime
-    FROM prescription
-    WHERE prescription.name = animal_name
-    AND prescription.VAT_owner = owner_vat
-    AND prescription.date_timestamp = date_;
+	FROM prescription
+	WHERE prescription.name = animal_name
+	AND prescription.VAT_owner = owner_vat
+	AND prescription.date_timestamp = date_;
 /*)*/
 END$$
 DELIMITER ;

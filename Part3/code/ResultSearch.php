@@ -17,15 +17,15 @@
 		echo($exception->getMessage());
 		echo("</p>");
 		exit();
-    }
+	}
 	
 	# Data received
 	$animal_name = $_REQUEST['animal_name'];
-    $owner_name = $_REQUEST['owner_name'];
+	$owner_name = $_REQUEST['owner_name'];
 	$clientVat = $_REQUEST['client_vat'];
 	echo("<p>Animal name: {$animal_name} </p>");
-    echo("<p>Owner name: {$owner_name} </p>");
-    echo("<p>Client VAT: {$clientVat} </p>");
+	echo("<p>Owner name: {$owner_name} </p>");
+	echo("<p>Client VAT: {$clientVat} </p>");
 	echo("<h3>Search results: </h3>");
 	
 	# Check for animals that match the search keys
@@ -36,7 +36,7 @@
 		$info = $connection->errorInfo();
 		echo("<p>Error: {$info[2]}</p>");
 		exit();
-    }
+	}
 	if ($result->rowCount() == 0)
 	{
 		echo("<h4>There was no animal found <form action='new_animal.php' method='post'>\n<p><input type='submit' value='Register New Animal'/><input type='hidden' value='{$animal_name}' name='animal_name'/><input type='hidden' value='{$owner_name}' name='owner_name'/></p>\n</form></h4>");
