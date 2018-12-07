@@ -20,12 +20,12 @@
 					if(!empty($_POST['client_name'])){$owner_name = $_POST['client_name'];}
 					echo("<td><input type='text' value='{$owner_name}' name='client_name'/></td>");
 ?>
-					<td><input type='submit' value="Get VAT's"/></td>
+					<td><input type='submit' value="Save & Get VAT's"/></td>
 				</tr>
 			</table>
 		</form>
 		<table style="width:35%">
-			<td><p>VAT - Full Name</p></td>
+			<td><p>VAT - Owner Full Name</p></td>
 			<td>
 		<form action="" method="post">
 		<select name='client_vat_option'>
