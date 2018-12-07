@@ -169,7 +169,7 @@ if(!isset($_POST['specialization_request'])){
 ?>
 				</select>    
 			</td>
-			<td><input type='submit' value="Specialize" name="specialization_request"/></td>
+			<td><input type='submit' value="Save & Specialize" name="specialization_request"/></td>
 <?php
 	echo("<input type='hidden' value='{$_POST['animal_name']}' name='animal_name'/>");
 	echo("<input type='hidden' value='{$_POST['client_name']}' name='client_name'/>");
