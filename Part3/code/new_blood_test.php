@@ -36,11 +36,8 @@
 	}
 	foreach($result as $row)
 	{
-		echo("<p>max(num) = {$row['max(num)']}</p>");
-
 		# Make the new procedure's num value bigger than all of the existing ones
 		$num = $row['max(num)'] + 1;
-		echo("<p>num = {$num}</p>");
 	}
 
 	# Free the result variable for the next queries
